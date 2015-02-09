@@ -77,6 +77,8 @@ website::$current_page->send_http_headers();
 			<a href="<?php echo website::$base_url; ?>/blog/" id="menu_blog">BLOG</a>
 			<a href="<?php echo website::$base_url; ?>/colabora.php" id="menu_colabora">COLABORA</a>
 			<a href="<?php echo website::$base_url; ?>/quienes-somos.php" id="menu_quienes_somos">¿QUIÉNES SOMOS?</a>
+                        <a href="<?php echo website::$base_url; ?>/descargas.php" id="menu_quienes_somos">DESCARGAS</a>
+            <a href="<?php echo website::$base_url; ?>/faq.php" id="menu_quienes_somos">FAQ</a>
 		</div>
         <?php require(dirname(__FILE__).'/../menu_admin.inc.php'); ?>
         <?php website::$current_page->include_main_content(); ?>

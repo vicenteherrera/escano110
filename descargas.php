@@ -15,6 +15,14 @@ website::load_layout('layout.inc.php');
 <div class="cabecera cab_participa">
     <span>Descargas</span>
 </div>
-<a href="descargas/guia_ilp.pdf"><img src="img/guia_ilp_min.png" alt="" /></a>
-
+<br /><br />
+<div style="width:50%; text-align: center; float: left;">
+    <a href="descargas/guia_ilp.pdf" target="_blank">Descarga la guía práctica para elaborar una Iniciativa Legislativa Popular<br /><br />
+        <img src="img/guia_ilp_min.png" alt="" /></a>
+</div>
+<div style="width:50%; text-align: center;  float: left;">
+    <a href="https://github.com/vicenteherrera/escano110" target="_blank">Descarga el código fuente de este sitio desde GitHub<br /><br />
+        <img src="img/GitHub-Mark-120px-plus.png" alt="" /></a>
+</div>
+<br style="clear:both" />
 
