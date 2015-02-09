@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Escaño 110</title>
+	<style>
+		body {
+			background-color: #eee;
+		}
+		#full_page {
+			width: 960px;
+			margin: 0 auto;
+			font-family: sans-serif;
+			border: 1px solid #ccc;
+			background-color: white;
+		}
+		#header {
+			position: relative;
+			padding: 0 0 15px 20px;
+            height: 138px;
+		}
+        #logo {
+            margin-top: 18px;
+
+        }
+        #ocupa {
+            margin-left: 40px;
+        }
+		.top_link {
+			background-color: #21AFEF;
+			display: inline-block;
+			padding: 4px 10px;
+			color: white;
+			text-decoration: none;
+			vertical-align: top;
+            float: right;
+            margin-right: 20px;
+            margin-top: 15px;
+			
+			
+		}
+		.top_link:hover {
+			background-color: #3D414D;
+		}
+		#menu_superior {
+			background-color: #3D414D;
+			padding: 0px 0;
+			text-align: center;
+		}
+		#menu_superior a {
+			font-weight: bold;
+			color: #CECFCF;
+			text-decoration: none;
+			border-top: 5px solid #3D414D;	
+			display: inline-block;
+			margin-right: 20px;
+			padding: 10px;
+		}
+		#menu_superior a:hover {
+			border-top: 5px solid #21AFEF;	
+			color: #21AFEF;
+		}
+		#central {
+			background-color: #E6E6E6;
+			text-align: center;
+			padding: 25px 0;
+            height: 225px;
+		}
+		#central a img {
+			transition-duration: 0.3s;
+			transition-timing-function: ease-out;
+			transform: scale(1, 1);
+			-webkit-transform: scale(1, 1);
+		}
+		#central a:hover img {
+			transition-duration: 0.3s;
+			transition-timing-function: ease-out;
+			transform: scale(1.2, 1.2);
+		  	-webkit-transform: scale(1.2, 1.2);
+		}
+		#propuestas {
+			text-align: center;
+			background-color: #E6E6E6;
+			padding-bottom: 40px;
+		}
+		
+		#propuesta {
+			display: inline-block;
+			width: 260px;
+			height: 500px;
+			background-color: white;
+			padding: 0px 20px;
+			text-align: left;
+			margin: 0 6px;
+		}
+		
+		#propuesta h2 {
+			color: #13ACEE;
+			font-size: 17px;
+			margin-bottom: 10px;
+		}
+		#propuesta h3 {
+			color: #333;
+			font-size: 14px;
+			padding-top: 0;
+			margin-top: 10;
+		}
+		.leer_mas {
+			display: inline-block;
+			text-decoration: none;
+			color: white;
+			padding: 5px 10px;
+			background-image: url(img/fondo_boton.jpg);
+			background-color: #13ACEE;
+			margin-top: 10px;
+			
+		}
+		.leer_mas:hover {
+			background-color: #555;
+			background-image: none;
+		}
+        
+        #pie1 {
+            background-color: #F2F2F2;
+            font-size: 11px;
+            color: #4E4E4E;
+        }
+
+        #pie_izq {
+            width: 650px;
+            border-right: 1px solid white;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            margin-top: 5px;
+            padding-top: 25px;
+            padding-bottom: 15px;
+        }
+        .pie_1_3 {
+            width: 27%;
+            text-align: left;
+            vertical-align: top;
+            display: inline-block;
+            padding: 0 0 0 6%;
+        }
+        .pie_1_3 img {
+            margin: 0 auto;
+        }
+        #pie_dcha {
+            width: 300px;
+            border-left: 1px solid #CCCCCC;
+            display: inline-block;
+            vertical-align: top;
+        }
+		#pie2 {
+			background-color: #4D4D4D;
+			padding: 15px 20px;
+		}
+		#pie2 a {
+			font-size: 12px;
+			color: #EFEFEF;
+			text-decoration: none;
+			display: inline-block;
+			margin-right: 20px;
+		}
+		#pie2 a:hover {
+			color: #13ACEE;
+		}
+		#pie2 img {
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div id="full_page">
+		<div id="header">
+			<img src="img/logo_escano110.jpg" alt="Escaño 110" id="logo" />
+			<img src="img/ocupa_tu_escano.jpg" alt=""  id="ocupa" />
+            <a href="#" class="top_link">Inicia sesión</a>
+			<a href="#" class="top_link">Regístrate</a>
+			
+		</div>
+		<div id="menu_superior">
+			<a href="#">¿QUÉ ES?</a>
+			<a href="#">PARTICIPA</a>
+			<a href="#">INICIATIVAS</a>
+			<a href="#">BLOG</a>
+			<a href="#">COLABORA</a>
+			<a href="#">¿QUIENES SOMOS?</a>
+		</div>
+		<div id="central">
+			<a href="#"><img src="img/presenta_tu_ilp.jpg" alt="" /></a>
+			<a href="#"><img src="img/pregunta.jpg" alt="" /></a>
+			<a href="#"><img src="img/haz_tu_propuesta.jpg" alt="" /></a>
+		</div>
+		<div id="propuestas">
+			<div id="propuesta">
+				<h2>TITULO DE LA PROPUESTA</h2>
+				<h3>Subtítulo de la propuesta</h3>
+				<img src="img/propuesta_ejemplo.jpg" alt="" /><br />
+				Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum<br />
+				<a href="#" class="leer_mas">LEER MÁS</a>
+			</div>
+			<div id="propuesta">
+				<h2>TITULO DE LA PROPUESTA</h2>
+				<h3>Subtítulo de la propuesta</h3>
+				<img src="img/propuesta_ejemplo.jpg" alt="" /><br />
+				Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum<br />
+				<a href="#" class="leer_mas">LEER MÁS</a>
+			</div>
+			<div id="propuesta">
+				<h2>TITULO DE LA PROPUESTA</h2>
+				<h3>Subtítulo de la propuesta</h3>
+				<img src="img/propuesta_ejemplo.jpg" alt="" /><br />
+				Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum<br />
+				<a href="#" class="leer_mas">LEER MÁS</a>
+			</div>
+		</div>
+		<div id="pie1">
+            
+            <div id="pie_izq">
+                <img src="img/entra.png" alt="Entra en el parlamento" /><br />
+                <br />
+                <br />
+                <div class="pie_1_3">
+                    <a href="http://sentido-comun.com/"><img src="img/sentido_comun.png" alt="Sentido Común" /></a><br />
+                    Promueve:<br />
+                    <strong>Asociación Sentido Común</strong>
+                </div>
+                <div class="pie_1_3">
+                    <a href="http://www.unia.es/"><img src="img/unia_goteo.png" alt="UNIA / Goteo" /></a><br />
+                    Apoya:<br />
+                    <strong>Universidad Internacional<br />de Andalucía<br />
+                    Goteo</strong>
+                </div>
+                <div class="pie_1_3">                    
+                    <a href="http://www.circulojuridico.eu/"><img src="img/circulo.png" alt="Círculo Jurídico" /></a><br />
+                    Asesoramiento legal:<br />
+                    <strong>Círculo Jurídico</strong>
+                    
+                </div>
+            </div>
+            <div id="pie_dcha">
+                <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/sentidocomunweb" data-widget-id="494446655689613312">Tweets por @sentidocomunweb</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+		</div>
+		<div id="pie2">
+			<a href="http://sentido-comun.com/">ASOCIACIÓN SENTIDO COMÚN</a>
+			<a href="#">AVISO LEGAL</a>
+			<a href="#">POLITICA COOKIES</a>
+			<a href="#">QUIÉNES SOMOS</a>
+			<a href="#">CONTACTO</a>
+			<a href="https://www.facebook.com/sentidocomunweb"><img src="img/logo_facebook_dark.jpg" alt="" /></a>
+			<a href="https://twitter.com/sentidocomunweb"><img src="img/logo_twitter_dark.jpg" alt="" /></a>
+		</div>
+	</div>
+</body>
+</html>

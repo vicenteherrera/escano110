@@ -1,0 +1,31 @@
+body{
+	background: #EBEBE8; 
+	color: #333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a{color: #666;}
+
+.slides li img{margin: 0 auto;}
+
+header hgroup h1{
+	font-size: 50px;
+	line-height: 60px;
+	color: #555;
+}
+
+header hgroup h2{
+	color: #777;
+	font-size: 30px;
+	line-height: 40px;
+}
+
+#main{padding-top: 20px;}
+
+
+.center{text-align: center;}
+
+/* Correcciones de estilo del slider */
+#slider{padding-bottom: 40px;}
+#slider .flex-direction-nav li a.prev {left: -16px;}
+#slider .flex-direction-nav li a.next {right: -24px;}

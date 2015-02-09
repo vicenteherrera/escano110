@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Responsive Slider</title>
+  <meta name="description" content="A flexible and responsible slider integrated in a 1140px CSS Grid">
+  <meta name="author" content="Fran Moreno">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/flexslider.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	  $(window).load(function() {
+	    $('.flexslider').flexslider({
+	    	controlsContainer: '.flex-container'
+	    });
+	  });
+	</script>
+	<!--[if lte IE 9]>		
+		<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-718520-23']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="row">
+    	<hgroup class="twelvecol center">
+				<h1>Responsive Slider</h1>
+				<h2>Using 1140px CSS Grid and FlexSlider</h2>
+			</hgroup>
+    </header>
+    
+    <div id="main" class="row">
+    
+    	<div class="onecol"></div> 
+    	   
+			<div id="slider" class="tencol">
+
+				<div class="flex-container">
+					<div class="flexslider">
+						<ul class="slides">
+							<li><img src="img/img1.jpg"/></li>
+							<li><img src="img/img2.jpg"/></li>
+							<li><img src="img/img3.jpg"/></li>
+							<li><img src="img/img4.jpg"/></li>
+							<li><img src="img/img5.jpg"/></li>
+						</ul><!-- .slides -->
+					</div><!-- .flexslider -->
+				</div><!-- .flex-container -->
+
+			</div>
+    	
+    	<div class="onecol last"></div>
+
+
+
+    </div>
+    <footer class="row">
+			<div class="twelvecol center">
+				<p>Images from flickr user: <a href="http://www.flickr.com/photos/61253710@N03/">Takedown161</a></p>
+				<p>Slider code from: <a href="http://flex.madebymufffin.com/">FlexSlider</a></p>				
+				<p><a href="http://www.franmoreno.com/2011/10/como-integrar-un-slider-de-imagenes-flexible-en-tu-web">Code explanation</a></p>
+			</div>
+    </footer>
+  </div> <!--! end of #container -->
+
+
+
+
+  <!--[if lt IE 7 ]>
+    <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
