@@ -12,14 +12,13 @@ website::load_layout('layout.inc.php');
 //require "check_user.inc.php";
 //===========================================================================================
 ?>
-<div class="cabecera cab_blog">
+<div class="cabecera cab_contacto">
     <span>Contacto</span>
 </div>
 
-<h1>Contacto</h1>
 <p style="text-align: center">
     <br />
-    <strong>Nuestra web se encuentra en elaboración, por favor, vuelva a consultar esta sección más adelante</strong>
+     Puedes ponerte en contacto con el equipo de Escaño110 escribiéndonos a <a href="mail:info@escaño110.org">info@escaño110.org</a>.
 </p>
 
 

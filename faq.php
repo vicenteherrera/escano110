@@ -12,10 +12,9 @@ website::load_layout('layout.inc.php');
 //require "check_user.inc.php";
 //===========================================================================================
 ?>
-<div class="cabecera cab_participa">
+<div class="cabecera cab_faq">
     <span>FAQ</span>
 </div>
-<h2>FAQ (Preguntas frecuentes)</h2>
 
 <h3>1.	¿Qué es el llamado escaño 110?</h3>
 El Parlamento de Andalucía aprobó en octubre de 2012, por unanimidad, la creación del escaño 110, sumando uno a los 109 ocupados por cargos políticos. De esta manera se intentaba fomentar la participación ciudadana ya que permitía, además de la presentación de Iniciativas Legislativas Populares (ILP), que la ciudadanía pudiera defender en la cámara sus propias iniciativas.

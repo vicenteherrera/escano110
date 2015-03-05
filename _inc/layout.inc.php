@@ -26,9 +26,9 @@ website::$current_page->send_http_headers();
     <?php echo website::$current_page->print_html_header();?>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
     <meta name="description" content="Escaño 110 es una plataforma web para fomentará la participación ciudadana en la vida política andaluza, propiciando una mayor comunicación entre movimientos ciudadanos y gestores públicos." />
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>    
-</head>
-<body>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>        
+ </head>
+ <body>
     <?php echo website::$current_page->getHtmlPostBodyIni();
     //background-image: url(echo website::$base_url; /img/fase_alfa.png);
     ?> 
@@ -38,8 +38,8 @@ website::$current_page->send_http_headers();
 			<img src="<?php echo website::$base_url; ?>/img/ocupa_tu_escano.jpg" alt="Escaño 110"  id="ocupa" />
             <?php echo $web_header->__toString(); ?>
             
-            <a href="https://twitter.com/sentidocomunweb" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/facebook_icon.png" alt="Twitter" /></a>
-            <a href="http://facebook.com/agenciaconsentidocomun" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/twitter_icon.png" alt="Facebook" /></a>
+            <a href="https://twitter.com/Escano110_" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/twitter_icon.png" alt="Twitter" /></a>
+            <a href="https://www.facebook.com/escano110" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/facebook_icon.png" alt="Facebook" /></a>
             <a href="<?php echo website::$base_url; ?>/quienes-somos.php#cofinanciadores" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/users_icon.png" alt="Quienes somos" /></a>  
             
 		</div>
@@ -50,9 +50,9 @@ website::$current_page->send_http_headers();
 			<a href="<?php echo website::$base_url; ?>/iniciativas.php" id="menu_iniciativas">INICIATIVAS</a>
 			<a href="<?php echo website::$base_url; ?>/blog/" id="menu_blog">BLOG</a>
 			<a href="<?php echo website::$base_url; ?>/colabora.php" id="menu_colabora">COLABORA</a>
-			<a href="<?php echo website::$base_url; ?>/quienes-somos.php" id="menu_quienes_somos">¿QUIÉNES SOMOS?</a>
-            <a href="<?php echo website::$base_url; ?>/descargas.php" id="menu_quienes_somos">DESCARGAS</a>
-            <a href="<?php echo website::$base_url; ?>/faq.php" id="menu_quienes_somos">FAQ</a>
+            <a href="<?php echo website::$base_url; ?>/descargas.php" id="menu_descargas">DESCARGAS</a>
+            <a href="<?php echo website::$base_url; ?>/quienes-somos.php" id="menu_quienes_somos">¿QUIÉNES SOMOS?</a>
+            <!--<a href="<?php echo website::$base_url; ?>/faq.php" id="menu_quienes_somos">FAQ</a>-->
 		</div>
         <?php require(dirname(__FILE__).'/../menu_admin.inc.php'); ?>
         <div id="main">
@@ -64,9 +64,10 @@ website::$current_page->send_http_headers();
 			<a href="<?php echo website::$base_url; ?>/aviso-legal.php">AVISO LEGAL</a>
 			<a href="<?php echo website::$base_url; ?>/politica-cookies.php">POLITICA COOKIES</a>
 			<a href="<?php echo website::$base_url; ?>/quienes-somos.php">QUIÉNES SOMOS</a>
+            <a href="<?php echo website::$base_url; ?>/faq.php">FAQ</a>
 			<a href="<?php echo website::$base_url; ?>/contacto.php">CONTACTO</a>
-			<a href="http://facebook.com/agenciaconsentidocomun"><img src="<?php echo website::$base_url; ?>/img/logo_facebook_dark.jpg" alt="" /></a>
-			<a href="https://twitter.com/sentidocomunweb"><img src="<?php echo website::$base_url; ?>/img/logo_twitter_dark.jpg" alt="" /></a>
+			<a href="https://www.facebook.com/escano110"><img src="<?php echo website::$base_url; ?>/img/logo_facebook_dark.jpg" alt="" /></a>
+			<a href="https://twitter.com/Escano110_"><img src="<?php echo website::$base_url; ?>/img/logo_twitter_dark.jpg" alt="" /></a>
 		</div>
         
 	</div>

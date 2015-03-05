@@ -12,7 +12,7 @@ website::load_layout('layout.inc.php');
 //require "check_user.inc.php";
 //===========================================================================================
 ?>
-<div class="cabecera cab_participa">
+<div class="cabecera cab_descargas">
     <span>Descargas</span>
 </div>
 <br /><br />
@@ -26,3 +26,4 @@ website::load_layout('layout.inc.php');
 </div>
 <br style="clear:both" />
 
+<script>document.getElementById('menu_descargas').className ='selected';</script>

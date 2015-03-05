@@ -16,7 +16,6 @@ website::load_layout('layout.inc.php');
     <span>Colabora</span>
 </div>
 
-<h1>Colabora</h1>
 <p>
 <h2>¿QUIERES COLABORAR CON ESTA PLATAFORMA? ELIGE UNA DE ESTAS DOS OPCIONES:</h2>
 
@@ -47,10 +46,17 @@ website::load_layout('layout.inc.php');
     <p><b>Dona:</b> Puedes hacer una aportación económica a esta plataforma, para hacerla 
     sostenible. De esta manera, podremos mantener la independencia que, creemos, este 
     proyecto necesita para que no se desvirtúe su objetivo de fomentar la participación 
-    democrática y mantener un espíritu crítico con los agentes políticos.</p>
+    democrática y mantener un espíritu crítico con los agentes políticos.<br />
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="padding: 0 0; margin:0 0; text-align: center;">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="FYBF622FDMANL">
+        <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal. La forma rápida y segura de pagar en Internet.">
+        <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    </p>
 </div>
 <p style="text-align: center">
     <br />
-    <strong>Nuestra web se encuentra en elaboración, por favor, vuelva a consultar esta sección más adelante</strong>
+     Puedes ponerte en contacto con el equipo de Escaño110 escribiéndonos a <a href="mail:info@escaño110.org">info@escaño110.org</a>.
 </p>
 <script>document.getElementById('menu_colabora').className ='selected';</script>

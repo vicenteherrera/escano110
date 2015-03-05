@@ -4,7 +4,7 @@ require_once('config.inc.php');
 
 $a = new avotable();
 $a->pag_items_pag = 6;
-$a->sql_where_forced = "`estado` = '1' AND DATE(fecha_cerrada)>DATE(NOW())";
+$a->sql_where_forced = "`estado` = '1' AND  OR DATE(fecha_cerrada) > DATE(NOW())";
 $a->order_default_column = 'fecha_admitida';
 $a->order_default_order = 'DESC';
 $a->init_config();
@@ -26,7 +26,7 @@ website::load_layout('layout_portada.inc.php');
 //===========================================================================================
 ?>
 <div id="central" style="position: relative;">
-    <img src="img/banderola_alfa_min.png" alt="Fase alfa" style="position:  absolute; left: -19px; top: 0px; z-index: 999;" />
+    <!--<img src="img/banderola_alfa_min.png" alt="Fase alfa" style="position:  absolute; left: -19px; top: 0px; z-index: 999;" />-->
 	<a href="./participa.php"><img src="img/presenta_tu_ilp.jpg" alt="" /></a>
 	<a href="./participa.php"><img src="img/pregunta.jpg" alt="" /></a>
 	<a href="./participa.php"><img src="img/haz_tu_propuesta.jpg" alt="" /></a>
@@ -37,10 +37,10 @@ website::load_layout('layout_portada.inc.php');
 
 
 <?php
-    if ( website::$user->is_logged_in() ) {
+    //if ( website::$user->is_logged_in() ) {
         $a->__echo();
         
-        //echo '<br /><br />'.$a->sql." ".$a->sql_where;
+     /*   //echo '<br /><br />'.$a->sql." ".$a->sql_where;
     } else {
         ?>
             <div style="background-image: url(img/mock_portada.png); width:960px; height: 455px; position:relative">
@@ -50,7 +50,7 @@ website::load_layout('layout_portada.inc.php');
                 </div>
             </div>
         <?php
-    }
+    }*/
 	
 ?>    
 </div>

@@ -23,7 +23,7 @@ website::load_layout('layout.inc.php');
 ?>
 
 
-<div class="cabecera cab_quienes">
+<div class="cabecera cab_quienes_somos">
     <span>Quiénes Somos</span>
 </div>
 

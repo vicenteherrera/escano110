@@ -1,5 +1,5 @@
 <?php
-if ( ! website::in_developer_mode() ) {
+if ( $_SERVER['SERVER_NAME'] != 'localhost' && $_SERVER['SERVER_NAME'] != '127.0.0.1'  ) {
     $link = @mysql_connect('localhost','escano110blog','ddleD1f2de');
 } else {
     $link = @mysql_connect('127.0.0.1','root','');

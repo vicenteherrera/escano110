@@ -39,6 +39,16 @@ abstract class item_avotable_base extends aitem {
         if ( $lowercase ) $result = strtolower($result);
         return $result;
     }
+    public function get_action_phrase($lowercase=false) {
+        $acciones = array(
+            avotable::enum_tipo_propuesta => 'Apoyar esta propuesta',
+            avotable::enum_tipo_ilp => 'Firmar esta iniciativa',
+            avotable::enum_tipo_pregunta => 'Votar esta pregunta'
+        );
+        $result = $acciones[$this->data["tipo"]];
+        if ( $lowercase ) $result = strtolower($result);
+        return $result;
+    }
     public function get_action_verb_past($lowercase=false) {
         $acciones = array(
             avotable::enum_tipo_propuesta => 'Apoyaste',

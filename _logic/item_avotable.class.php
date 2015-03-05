@@ -116,16 +116,16 @@ class item_avotable extends item_avotable_base {
             if ( is_array($votada) && count($votada)>0 ) {
                 $result .= $this->get_action_verb_past()." este elemento el ".$votada['fecha']."<br /><br />";
             } else {
-                if ( $d->tipo == avotable::enum_tipo_ilp ) {
-                    $result .= '<input type="button" value="Firmar" onclick="testSign();" />&nbsp;';
-                    $result .= '<span id="resultMessage"> </span>';
-                    $result .= '<input type="text" readonly="readonly" id="result" />';
-                    ;
-                } else {
+                //if ( $d->tipo == avotable::enum_tipo_ilp ) {
+                    //$result .= '<input type="button" value="Firmar" onclick="testSign();" />&nbsp;';
+                    //$result .= '<span id="resultMessage"> </span>';
+                    //$result .= '<input type="text" readonly="readonly" id="result" />';
+                    
+                //} else {
                     $result .= "<a href=\"".website::$base_url."/votar.php?id=".$d->id."\" class=\"leer_mas\"> ";
-                    $result .= $this->get_action_verb();
-                    $result .= " este elemento</a><br /><br />";
-                }
+                    $result .= $this->get_action_phrase();
+                    $result .= "</a><br /><br />";
+                //}
             }
             
             if ( $d->tipo <> avotable::enum_tipo_propuesta ) {

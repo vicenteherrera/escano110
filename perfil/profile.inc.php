@@ -11,14 +11,14 @@ echo "<b>Email / Usuario:</b> ".website::$user->get('username')."<br />";
 echo "<b>Nombre:</b> ".website::$user->get('name')."<br />";
 echo "<b>Apellidos:</b> ".website::$user->get('surname')."<br />";
 echo "</div>";
-echo '<a href="'.website::$base_url.'/perfil/editar.php" class="link_button2" style="">Editar mis datos</a>';
-echo '<a href="'.website::$base_url.'/fw-login.php?command_=logout" class="link_button2" style="">Cerrar sesión</a>';
+echo '<a href="'.website::$base_url.'/perfil/editar.php" class="link_button2">Editar mis datos</a>';
+echo '<a href="'.website::$base_url.'/fw-login.php?command_=logout" class="link_button2">Cerrar sesión</a>';
 
 echo "<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>";
 
-echo '<a href="mis_iniciativas.php" class="link_button2" style="">Ver mis iniciativas</a>  |  ';
+echo '<a href="mis_iniciativas.php" class="link_button2">Ver mis iniciativas</a>  |  ';
 
-echo '<a href="nueva_ilp.php" class="link_button2" style="">Proponer ILP</a>';
-echo '<a href="nueva_propuesta.php" class="link_button2" style="">Proponer propuesta</a>';
-echo '<a href="nueva_pregunta.php" class="link_button2" style="">Proponer pregunta</a>';
+echo '<a href="nueva_ilp.php" class="link_button2">Presentar ILP</a>';
+echo '<a href="nueva_propuesta.php" class="link_button2">Hacer propuesta</a>';
+echo '<a href="nueva_pregunta.php" class="link_button2">Lanzar pregunta</a>';
 

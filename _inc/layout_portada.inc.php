@@ -23,10 +23,9 @@ website::$current_page->send_http_headers();
     <?php echo website::$current_page->print_html_header();?>
     <meta name="description" content="Escaño 110 es una plataforma web para fomentará la participación ciudadana en la vida política andaluza, propiciando una mayor comunicación entre movimientos ciudadanos y gestores públicos." />    
     <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css" />
-    
     <!-- CSS file -->
     <link rel="stylesheet" href="./slider/css/flexslider.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="./_inc/cookies.css" rel="stylesheet" />
     <!-- Javascript file -->
     <script type="text/javascript" src="./slider/js/jquery.1.6.2.min.js"></script>
     <script type="text/javascript" src="./slider/js/jquery.flexslider-min.js"></script>
@@ -52,8 +51,30 @@ website::$current_page->send_http_headers();
         });
     </script>
 
+    <!-- SCRIPT CONTROL DE COOKIES -->
+    <script type="text/javascript">
+    function controlcookies() {
+             // si variable no existe se crea (al clicar en Aceptar)
+        localStorage.controlcookie = (localStorage.controlcookie || 0);
+     
+        localStorage.controlcookie++; // incrementamos cuenta de la cookie
+        cookie1.style.display='none'; // Esconde la pol?ca de cookies
+    }
+    </script>
 </head>
 <body>
+    <div class="cookiesms" id="cookie1">
+        "Este sitio web utiliza cookies propias y de terceros para optimizar tu navegación adaptarse a tus preferencias y realizar labores analíticas. <br />
+        Al continuar navegando aceptas nuestra <a href="./politica-cookies.php">Política de Cookies</a>. 
+        <button onclick="controlcookies()">  Aceptar  </button>
+    </div>
+    <script type="text/javascript">
+    if (localStorage.controlcookie>0){ 
+    document.getElementById('cookie1').style.bottom = '-70px';
+    }
+    </script>
+    <!-- Fin cookies --->
+    
     <?php echo website::$current_page->getHtmlPostBodyIni();
     //background-image: url( echo website::$base_url;  /img/fase_alfa.png);
     ?> 
@@ -64,8 +85,8 @@ website::$current_page->send_http_headers();
             
             <?php echo $web_header->__toString(); ?>
             
-            <a href="https://twitter.com/sentidocomunweb" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/facebook_icon.png" alt="Twitter" /></a>
-            <a href="http://facebook.com/agenciaconsentidocomun" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/twitter_icon.png" alt="Facebook" /></a>
+            <a href="https://twitter.com/Escano110_" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/twitter_icon.png" alt="Twitter" /></a>
+            <a href="https://www.facebook.com/escano110" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/facebook_icon.png" alt="Facebook" /></a>
             <a href="<?php echo website::$base_url; ?>/quienes-somos.php#cofinanciadores" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/users_icon.png" alt="Quienes somos" /></a>           
             
 		</div>
@@ -76,9 +97,9 @@ website::$current_page->send_http_headers();
 			<a href="<?php echo website::$base_url; ?>/iniciativas.php" id="menu_iniciativas">INICIATIVAS</a>
 			<a href="<?php echo website::$base_url; ?>/blog/" id="menu_blog">BLOG</a>
 			<a href="<?php echo website::$base_url; ?>/colabora.php" id="menu_colabora">COLABORA</a>
+            <a href="<?php echo website::$base_url; ?>/descargas.php" id="menu_descargas">DESCARGAS</a>
 			<a href="<?php echo website::$base_url; ?>/quienes-somos.php" id="menu_quienes_somos">¿QUIÉNES SOMOS?</a>
-                        <a href="<?php echo website::$base_url; ?>/descargas.php" id="menu_quienes_somos">DESCARGAS</a>
-            <a href="<?php echo website::$base_url; ?>/faq.php" id="menu_quienes_somos">FAQ</a>
+            <!--<a href="<?php echo website::$base_url; ?>/faq.php" id="menu_quienes_somos">FAQ</a>-->
 		</div>
         <?php require(dirname(__FILE__).'/../menu_admin.inc.php'); ?>
         <?php website::$current_page->include_main_content(); ?>
@@ -99,15 +120,15 @@ website::$current_page->send_http_headers();
                     Goteo</strong>
                 </div>
                 <div class="pie_1_3">                    
-                    <a href="http://www.circulojuridico.eu/"><img src="img/circulo.png" alt="Círculo Jurídico" /></a><br />
+                    <img src="img/circulo.png" alt="Círculo Jurídico" /><br />
                     Asesoramiento legal:<br />
                     <strong>Círculo Jurídico</strong>
                     
                 </div>
             </div>
             <div id="pie_dcha">
-                <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/sentidocomunweb" data-widget-id="494446655689613312">Tweets por @sentidocomunweb</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/Escano110_" data-widget-id="494446655689613312">Tweets por el @Escano110_.</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
 		</div>
 		<div id="pie2">
@@ -115,11 +136,13 @@ website::$current_page->send_http_headers();
 			<a href="<?php echo website::$base_url; ?>/aviso-legal.php">AVISO LEGAL</a>
 			<a href="<?php echo website::$base_url; ?>/politica-cookies.php">POLITICA COOKIES</a>
 			<a href="<?php echo website::$base_url; ?>/quienes-somos.php">QUIÉNES SOMOS</a>
+            <a href="<?php echo website::$base_url; ?>/faq.php">FAQ</a>
 			<a href="<?php echo website::$base_url; ?>/contacto.php">CONTACTO</a>
-			<a href="http://facebook.com/agenciaconsentidocomun"><img src="<?php echo website::$base_url; ?>/img/logo_facebook_dark.jpg" alt="" /></a>
-			<a href="https://twitter.com/sentidocomunweb"><img src="<?php echo website::$base_url; ?>/img/logo_twitter_dark.jpg" alt="" /></a>
+			<a href="https://www.facebook.com/escano110"><img src="<?php echo website::$base_url; ?>/img/logo_facebook_dark.jpg" alt="" /></a>
+			<a href="https://twitter.com/Escano110_"><img src="<?php echo website::$base_url; ?>/img/logo_twitter_dark.jpg" alt="" /></a>
 		</div>
 	</div>
+    <br /><br /><br />
     <?php echo website::$current_page->getHtmlPrePageEnd(); ?>
 </body>
 </html>
