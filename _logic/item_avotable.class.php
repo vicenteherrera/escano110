@@ -31,7 +31,7 @@ class item_avotable extends item_avotable_base {
         $sql = new sql_str("SELECT fecha FROM votos WHERE id_propuesta='{@0}' AND id_usuario='{@1}'", $d->id, website::$user->get_id() );
         $votada = website::$database->execute_get_row_array($sql);
                 
-        $img_url = website::$base_url.'/img/miniatura_generica.png';
+        $img_url = website::$base_url.'/img/miniatura_generica_full.jpg';
         if ($d->imagen != '' ) {
             $img_url = website::$base_url.'/get_img3.php?file='.rawurlencode($d->imagen).'&view_mode=thumb';
         }

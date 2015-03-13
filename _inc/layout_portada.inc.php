@@ -82,13 +82,7 @@ website::$current_page->send_http_headers();
 		<div id="header" style="background-repeat:no-repeat; background-position: 400px -18px;">
 			<a href="<?php echo website::$base_url; ?>/"><img src="<?php echo website::$base_url; ?>/img/logo.png" alt="Escaño 110" id="logo" /></a>
 			<img src="<?php echo website::$base_url; ?>/img/ocupa_tu_escano.jpg" alt="Escaño 110" id="ocupa" />
-            
             <?php echo $web_header->__toString(); ?>
-            
-            <a href="https://twitter.com/Escano110_" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/twitter_icon.png" alt="Twitter" /></a>
-            <a href="https://www.facebook.com/escano110" target="_blank" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/facebook_icon.png" alt="Facebook" /></a>
-            <a href="<?php echo website::$base_url; ?>/quienes-somos.php#cofinanciadores" class="network_icon"><img src="<?php echo website::$base_url; ?>/img/users_icon.png" alt="Quienes somos" /></a>           
-            
 		</div>
 		<div id="menu_superior">
             <a href="<?php echo website::$base_url; ?>/" id="menu_inicio">INICIO</a>
@@ -144,6 +138,16 @@ website::$current_page->send_http_headers();
 	</div>
     <br /><br /><br />
     <?php echo website::$current_page->getHtmlPrePageEnd(); ?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-822637-26', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
 <?php 

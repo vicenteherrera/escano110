@@ -4,7 +4,7 @@ require_once('config.inc.php');
 
 $a = new avotable();
 $a->pag_items_pag = 6;
-$a->sql_where_forced = "`estado` = '1' AND  OR DATE(fecha_cerrada) > DATE(NOW())";
+$a->sql_where_forced = "`estado` = '1' AND  DATE(fecha_cerrada) > DATE(NOW())";
 $a->order_default_column = 'fecha_admitida';
 $a->order_default_order = 'DESC';
 $a->init_config();
