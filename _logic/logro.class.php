@@ -15,6 +15,8 @@ class logro {
 	
 	public $value = 0;
 	
+    private $demo_mode = false;
+    
 	public function __construct($tipo) {
 		$this->tipo = $tipo;
 		
@@ -50,7 +52,9 @@ class logro {
         $plata = false;
         $oro = false;
         
-        $this->value = rand(1, $this->min_plata)*2; 
+        if ( $this->demo_mode ) {
+            $this->value = rand(1, $this->min_plata)*2;
+        } 
         $level = round(($this->value / $this->min_bronce) * 100);
         
         if ( $this->value < $this->min_bronce ) {

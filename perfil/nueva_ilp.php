@@ -2,6 +2,8 @@
 require_once('config.inc.php');
 $a = new ilps();
 $a->default_command = 'new';
+$a->save_message = 'Tu Iniciativa Legislativa Popular ha sido enviada.<br /><br />En breve será revisada por nuestro equipo para su publicación.<br />Te avisaremos por email cuando se haga pública.';
+$a->save_continue_url = website::$base_url.'/participa.php';
 $a->init_config();
 $a->get('tipo')->set_restricted_value(avotable::enum_tipo_ilp);
 $a->get('estado')->set_restricted_value(0);

@@ -62,22 +62,41 @@ if ( empty($link) ) {
 $prop_img = (500 / 909 );
 ?>
 
-
-
 <div> <!--style="height:<?php echo round((370*$prop_img)+2); ?>px;">-->
     <div class="flex-container">
         <div class="flexslider">
             <ul class="slides">
             <?php
                 foreach($data as $d) {
-                    $date = date('n M, Y',strtotime( $d['post_date'] ));
+                    
+                    $meses = array(
+                        1=>'Enero',
+                        2=>'Febrero',
+                        3=>'Marzo',
+                        4=>'Abril',
+                        5=>'Mayo',
+                        6=>'Junio',
+                        7=>'Julio',
+                        8=>'Agosto',
+                        9=>'Septiembre',
+                        10=>'Octubre',
+                        11=>'Noviembre',
+                        12=>'Diciembre',
+                    );
+                    
+                    setlocale(LC_ALL,"es_ES");
+                    
+                    $date = date('n',strtotime( $d['post_date'] )).' DE '.
+                            $meses[date('n',strtotime( $d['post_date'] ))].', '.
+                            date('Y',strtotime( $d['post_date'] ));
                     $img = substr( $d['featured_img'], 0, strrpos( $d['featured_img'], '.' ) ) .'-520x245.'. substr( $d['featured_img'], strrpos( $d['featured_img'], '.' ) + 1 );
                     
                     echo '<li class="li-slider">';
-                    
+                    echo '<a href="http://www.xn--escao110-g3a.org/blog/'.$d['post_name'].'" target="_blank">';
                     echo '<img src="http://www.xn--escao110-g3a.org/blog/wp-content/uploads/'.$img.'" style="width:300px; height: '.round(300*$prop_img).'px;" />';
+                    echo '</a>';
                     echo '<p class="slider-info">';
-                    echo '<span class="post_category">DIARIO DE DESARROLLO</span><span class="post_date">'.$date.'</span>';
+                    echo '<span class="post_category">NOTICIAS  &nbsp;-</span><span class="post_date">'.$date.'</span>';
                     echo '</p>';
                     echo '<span class="noticia_titulo">'.$d['post_title'].'</span>';
                     

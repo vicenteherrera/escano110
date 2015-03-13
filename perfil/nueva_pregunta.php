@@ -12,6 +12,8 @@ if ( command_select::get_count_selected_ids() == 0 ) {
 } else {
     $a = new preguntas();
     $a->default_command = 'new';
+    $a->save_message = 'Tu Pregunta ha sido enviada.<br /><br />En breve será revisada por nuestro equipo para su publicación.<br />Te avisaremos por email cuando se haga pública.';
+    $a->save_continue_url = website::$base_url.'/participa.php';
     $a->init_config();
     $a->get('id_parlamentario')->set_default_value(command_select::get_selected_id());
     $a->get('tipo')->set_restricted_value(avotable::enum_tipo_pregunta);

@@ -87,10 +87,12 @@ class avotable extends table_data {
         $this->get('id')->set_visible(false);
         $this->get('votos')->set_readonly();
         $this->get('fecha_creada')->set_readonly()->set_title('Fecha enviada');
-        $this->get('fecha_admitida')->set_use_seconds(false);
-        $this->get('fecha_cerrada')->set_use_seconds(false);
+        $this->get('fecha_admitida')->set_readonly()->set_use_seconds(false);
+        $this->get('fecha_cerrada')->set_readonly()->set_use_seconds(false);
         //$this->get('fecha_admitida')->set_readonly();
         //$this->get('fecha_cerrada')->set_readonly();
+        
+        //$this->get('id_parlamentario')->set_nullify_empties();
         
         $this->get('id_usuario')->set_title('Creada por')->set_readonly();
         if ( isset($this->columns_col['imagen'] ) ) {
@@ -113,8 +115,19 @@ class avotable extends table_data {
                     website::$user->get_id() => website::$user->get_full_name() ) 
             );
         }
-        //TODO: Añadir campo existente id_usuario
-
-        
+    }
+    public function after_init_values() {
+        $this->set_creator_fullname();
+    }
+    function set_creator_fullname() { 
+        $id_usu = $this->get('id_usuario')->get_value();
+        $options_usu = $this->get('id_usuario')->get_options();
+        if ( $id_usu && !isset($options_usu[$id_usu]) ) {
+            $u = new fw_user($id_usu);
+            $u->load();
+            $this->get('id_usuario')->set_options(
+                array( $id_usu => $u->get_fullname() )
+            );       
+        }
     }
 }

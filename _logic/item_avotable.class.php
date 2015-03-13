@@ -28,9 +28,11 @@ class item_avotable extends item_avotable_base {
             3 => 'Pregunta'
         );
         
-        $sql = new sql_str("SELECT fecha FROM votos WHERE id_propuesta='{@0}' AND id_usuario='{@1}'", $d->id, website::$user->get_id() );
-        $votada = website::$database->execute_get_row_array($sql);
-                
+        $votada = array();
+        if ( website::$user->is_logged_in() ) {
+            $sql = new sql_str("SELECT fecha FROM votos WHERE id_propuesta='{@0}' AND id_usuario='{@1}'", $d->id, website::$user->get_id() );
+            $votada = website::$database->execute_get_row_array($sql);
+        }
         $img_url = website::$base_url.'/img/miniatura_generica_full.jpg';
         if ($d->imagen != '' ) {
             $img_url = website::$base_url.'/get_img3.php?file='.rawurlencode($d->imagen).'&view_mode=thumb';
@@ -76,7 +78,7 @@ class item_avotable extends item_avotable_base {
             $result .= '<iframe width="600" height="337" src="'.(str_replace("watch?v=","embed/",$d->url_video)).'" frameborder="0" allowfullscreen></iframe>';
         }
         if ($d->url_descripcion) {
-            $result .= '<h3><a href="'.rawurlencode($d->url_articulo).'" class="leer_mas">Visita la web descriptiva para más información</a></h3>';
+            $result .= '<h3><a href="'.rawurlencode($d->url_articulo).'" class="leer_mas" rel="nofollow">Visita la web descriptiva para más información</a></h3>';
         }
         if ($d->url_articulo) {
             $result .= '<h3><a href="'.rawurlencode($d->url_articulo).'" class="leer_mas">Visita el artículo destacado en nuestro blog</a></h3>';
@@ -95,7 +97,7 @@ class item_avotable extends item_avotable_base {
         
         $votos = $d->votos;               
         $logro = new logro($d->tipo);
-        $votos = $logro->get_value();
+        //$votos = $logro->get_value();
             
         /*
         if ( $d->tipo <> avotable::enum_tipo_pregunta ) {
@@ -110,22 +112,28 @@ class item_avotable extends item_avotable_base {
             $result .= 'Este elemento aún no ha sido revisado para su publicación.<br />';
             
         } else if ( $d->estado == avotable::enum_estado_admitida ) { 
-        
+            
             $result .= "<span class=\"numero_votos\">$votos ".$this->get_action_noun(true)."</span><br /><br /><br />";
             $result .= "<b>Quedan ".$this->get_descriptive_time_to_finish()."</b><br /><br />";
             if ( is_array($votada) && count($votada)>0 ) {
-                $result .= $this->get_action_verb_past()." este elemento el ".$votada['fecha']."<br /><br />";
+                $result .= $this->get_action_verb_past()." este elemento el ".date('d/m/Y',strtotime($votada['fecha']))."<br /><br />";
             } else {
-                //if ( $d->tipo == avotable::enum_tipo_ilp ) {
-                    //$result .= '<input type="button" value="Firmar" onclick="testSign();" />&nbsp;';
-                    //$result .= '<span id="resultMessage"> </span>';
-                    //$result .= '<input type="text" readonly="readonly" id="result" />';
-                    
-                //} else {
-                    $result .= "<a href=\"".website::$base_url."/votar.php?id=".$d->id."\" class=\"leer_mas\"> ";
-                    $result .= $this->get_action_phrase();
-                    $result .= "</a><br /><br />";
-                //}
+                if ( ! website::$user->is_logged_in() ) {
+                    $result .= "<a href=\"".website::$base_url."/participa.php\" class=\"leer_mas\">Regístrate para ".strtolower($this->get_action_phrase())."</a><br /><br />";
+                } else {
+                    //if ( $d->tipo == avotable::enum_tipo_ilp ) {
+                        //$result .= '<input type="button" value="Firmar" onclick="testSign();" />&nbsp;';
+                        //$result .= '<span id="resultMessage"> </span>';
+                        //$result .= '<input type="text" readonly="readonly" id="result" />';
+                        
+                    //} else {
+                        $result .= "<span id=\"procesar_voto\" style=\"display:none; line-height: 34px;\" >Procesando...</span>";
+                        $result .= "<a href=\"".website::$base_url."/votar.php?id=".$d->id."\" class=\"leer_mas\" rel=\"nofollow\" id=\"votar_link\" ";
+                        $result .= "onclick=\"this.style.display='none';document.getElementById('procesar_voto').style.display='inline';return true;\">";
+                        $result .= $this->get_action_phrase();
+                        $result .= "</a><br /><br />";
+                    //}
+                }
             }
             
             if ( $d->tipo <> avotable::enum_tipo_propuesta ) {
