@@ -84,6 +84,10 @@ class avotable extends table_data {
         /* ****************************************************************** */
         $this->filter_fields = $this->columns_table_view;
         
+        $cmd_select = new command_select(website::$base_url.'/administracion/votos.php/');
+        $cmd_select->set_name("Apoyos");
+        $this->add_command( $cmd_select );
+        
         $this->get('id')->set_visible(false);
         $this->get('votos')->set_readonly();
         $this->get('fecha_creada')->set_readonly()->set_title('Fecha enviada');

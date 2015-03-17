@@ -53,7 +53,7 @@
 	website::$theme = new theme_config('modern');
 	//User configuration
 	website::$user = new user(website::$database);
-    website::$user->user_table_columns['id_empresa']='id_empresa';
+    //website::$user->user_table_columns['id_empresa']='id_empresa';
     website::$user->user_table_columns['date_of_birth']='date_of_birth';
     website::$user->group_names = array(
         'administrador'=>'Administrador/a',

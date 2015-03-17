@@ -55,23 +55,30 @@ class item_avotable extends item_avotable_base {
         if ( ! empty( $d->id_parlamentario ) ) {
             $p = new parlamentario( $d->id_parlamentario );
             $p->load_recursive();
-            $result .= '<h3>Parlamentario/a</h3><br />';
+            
+            $result .= '<h3>Parlamentario/a</h3>';
+            $result .= '<div style="width: 160px; display:inline-block;">';
             if ( ! empty( $p->foto ) ) {
-                $result .= '<img src="'.website::$base_url.'/get_img_parlamentario.php?file='.$p->foto.'&view_mode=thumb" alt="Foto '.$p->nombre.' '.$p->apellidos.'" style="float:left; margin-right: 20px;"/>';
+                $result .= '<img src="'.website::$base_url.'/get_img_parlamentario.php?file='.$p->foto.'&view_mode=thumb" alt="Foto '.$p->nombre.' '.$p->apellidos.'" /><br />';
             }
             $result .= '<!-- id: '.$p->id.' -->';
             $result .= '<b>'.$p->nombre.' '.$p->apellidos.'</b><br />';
             $result .= '<i>'.info::get_provincias_andalucia($p->circinscripcion).'</i>';
+            
             foreach ($p->_comisiones as $comision) {
                 $result .= $comision->nombre."<br />";
+            }
+            $result .= '</div>';
+            if ( ! empty( $d->texto_respuesta ) ) {
+                $result .= '<div style="width: 450px; display:inline-block; vertical-align: top;"><div class="bubble">';
+                //$result .= '<h3>Respuesta</h3>';
+                $result .= nl2br($d->texto_respuesta);
+                $result .= '</div></div>';
             }
             $result .= '<br style="clear: both;" />';
   
         }
-        if ( ! empty( $d->texto_respuesta ) ) {
-            $result .= '<h3>Respuesta</h3>';
-            $result .= nl2br($d->texto_respuesta);
-        }
+
         $result .= '<br /><br />';
         
         if ($d->url_video) {

@@ -17,7 +17,7 @@ website::load_layout('layout.inc.php');
 
 //===========================================================================================
 
-echo '<h1>Nueva propuesta</h1>';
+echo '<h1 style="width: 480px;margin: 20px auto;">Nueva propuesta</h1>';
 if ( ! website::$user->is_logged_in() ) {
     die('Debe iniciar sesión');   
 }

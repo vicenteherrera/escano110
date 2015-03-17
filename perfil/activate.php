@@ -34,7 +34,7 @@ if ( $_GET['k'] == 'ok' ) {
         html_template::redirect('./activate.php?k=ok','Activación correcta');
     } else {
         echo "Error al procesar la activación.<br /><br />";
-        echo '<a href="'.website::$base_url.'/" class="link_button"><<< Volver a Inicio</a><br /><br />';
+        echo '<a href="'.website::$base_url.'/" class="leer_mas"><<< Volver a Inicio</a><br /><br />';
         die;
     }
 }
