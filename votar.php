@@ -38,7 +38,9 @@ $ok = website::$database->execute_nonquery($sql);
 //var_dump(website::$user);
 
 if ( $ok ) {
-    $sql = new sql_str("UPDATE avotable SET votos = votos + 1 WHERE id = '{@0}'", $_GET['id']);
+    //$sql = new sql_str("UPDATE avotable SET votos = votos + 1 WHERE id = '{@0}'", $_GET['id']);
+    $sql = new sql_str("UPDATE avotable SET votos = (SELECT COUNT(1) AS num FROM votos WHERE id_propuesta='{@0}') WHERE id = '{@0}'", $_GET['id']);
+    
     $ok = website::$database->execute_nonquery($sql);
     //echo $sql . "<br /><br />";
 }

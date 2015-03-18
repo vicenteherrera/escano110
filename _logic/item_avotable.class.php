@@ -121,7 +121,13 @@ class item_avotable extends item_avotable_base {
         } else if ( $d->estado == avotable::enum_estado_admitida ) { 
             
             $result .= "<span class=\"numero_votos\">$votos ".$this->get_action_noun(true)."</span><br /><br /><br />";
-            $result .= "<b>Quedan ".$this->get_descriptive_time_to_finish()."</b><br /><br />";
+            
+            if ( $d->tipo == avotable::enum_tipo_pregunta ) {
+                if ($d->texto_respuesta=='')
+                    $result .= "<b>Tiempo sin responder: ".$this->get_days_without_answer()."</b><br /><br />";
+            } else {
+                $result .= "<b>Quedan ".$this->get_descriptive_time_to_finish()."</b><br /><br />";
+            }
             if ( is_array($votada) && count($votada)>0 ) {
                 $result .= $this->get_action_verb_past()." este elemento el ".date('d/m/Y',strtotime($votada['fecha']))."<br /><br />";
             } else {
@@ -134,6 +140,9 @@ class item_avotable extends item_avotable_base {
                         //$result .= '<input type="text" readonly="readonly" id="result" />';
                         
                     //} else {
+                        if ( $d->tipo == avotable::enum_tipo_pregunta ) {
+                            //$result .= '¿Apoyas esta pregunta?<br />';
+                        }
                         $result .= "<span id=\"procesar_voto\" style=\"display:none; line-height: 34px;\" >Procesando...</span>";
                         $result .= "<a href=\"".website::$base_url."/votar.php?id=".$d->id."\" class=\"leer_mas\" rel=\"nofollow\" id=\"votar_link\" ";
                         $result .= "onclick=\"this.style.display='none';document.getElementById('procesar_voto').style.display='inline';return true;\">";

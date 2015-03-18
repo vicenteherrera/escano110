@@ -1,6 +1,6 @@
 <?php
 
-class avotable_data {
+class avotable_data extends apersistant {
    public $id;
    public $tipo;
    public $titulo;
@@ -21,4 +21,27 @@ class avotable_data {
    public $id_comision;
    public $id_parlamentario;
    public $texto_respuesta;
+   
+   public $_table_name = 'avotable';
+   
+   public function get_nombre_tipo() {
+        switch($this->tipo) {
+            case avotable::enum_tipo_ilp:
+                return 'iniciativa';
+            case avotable::enum_tipo_pregunta:
+                return 'pregunta';
+            case avotable::enum_tipo_propuesta:
+                return 'propuesta';
+        }
+   }
+   public function get_nombre_apoyos() {
+        switch($this->tipo) {
+            case avotable::enum_tipo_ilp:
+                return 'firmas';
+            case avotable::enum_tipo_pregunta:
+                return 'votos';
+            case avotable::enum_tipo_propuesta:
+                return 'apoyos';
+        }
+   }
 }

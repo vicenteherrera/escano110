@@ -4,7 +4,10 @@ require_once('config.inc.php');
 
 $a = new avotable();
 $a->pag_items_pag = 6;
-$a->sql_where_forced = "`estado` = '1' AND  DATE(fecha_cerrada) > DATE(NOW())";
+$a->sql_where_forced = 
+    "(`estado` = '".avotable::enum_estado_admitida."' OR ".
+    " `estado` = '".avotable::enum_estado_exitosa."' ) AND ".
+    "(DATE_ADD(fecha_cerrada, INTERVAL 7 DAY) > DATE(NOW()) OR fecha_cerrada='' OR fecha_cerrada='0000-00-00 00:00:00' )";
 $a->order_default_column = 'fecha_admitida';
 $a->order_default_order = 'DESC';
 $a->init_config();

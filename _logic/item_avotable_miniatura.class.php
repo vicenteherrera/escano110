@@ -32,6 +32,17 @@ class item_avotable_miniatura extends item_avotable_base {
         $result .= '<img src="'.$img_url.'" alt="" class="miniatura_foto" />';
         $result .= '</div>';
         $result .= '<img src="'.website::$base_url.'/img/tipos/'.$tipo_class[$d['tipo']].'.png" alt="" class="miniatura_logo" />';
+        if ( $d['tipo'] == avotable::enum_tipo_pregunta ) {
+            if ( $d['texto_respuesta'] != '' ) {
+                $img_resp = 'respondida.png';
+            } else {
+                $img_resp = 'no_respondida.png';
+            }
+            $result .= '<img src="'.website::$base_url.'/img/'.$img_resp.'" 
+                style="right: 120px; top: 5px;"
+                alt="" class="miniatura_logo" />';
+        }
+        
         
         $logro = new logro($d['tipo']);
         $result .= $logro->get_icon($d['votos']);

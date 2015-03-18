@@ -45,6 +45,7 @@ class preguntas extends avotable {
         $this->get('tipo')->set_restricted_value( avotable::enum_tipo_pregunta );
         $this->get('titulo')->set_title('Asunto');
         $this->get('votos')->set_title('Apoyos');
+        $this->get('fecha_cerrada')->set_title('Fecha respondida');
         //$this->control_group = new control_edit($this);
         //$this->control_group->add(array('titulo'));
      }

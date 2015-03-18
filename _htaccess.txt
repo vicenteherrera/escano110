@@ -1,0 +1,7 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^escaño110.org [NC]
+RewriteRule ^(.*)$ http://www.escaño110.org/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^xn--escao110-g3a.org [NC]
+RewriteRule ^(.*)$ http://www.xn--escao110-g3a.org/$1 [R=301,L]

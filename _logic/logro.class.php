@@ -17,6 +17,10 @@ class logro {
 	
     private $demo_mode = false;
     
+    public $oro = false;
+    public $plata = false;
+    public $bronce = false;
+    
 	public function __construct($tipo) {
 		$this->tipo = $tipo;
 		
@@ -72,8 +76,6 @@ class logro {
                 $result .= '<span>Alcanzados '.$this->value.'</span>';
                 $result .= $this->get_meter($level);
                 $result .= '<span style="text-align: right; display:block;">Faltan '.($this->min_plata-$this->value).' para PLATA</span>';
-
-                
             } else {
                 $plata = true;
                 $result .= 'LOGRO PLATA conseguido<br /><br />';
@@ -88,7 +90,6 @@ class logro {
                     $result .= 'LOGRO ORO conseguido<br /><br />';
                 }
             }
-            
         }
         $result .= "<br />". $this->get_imgs_logros($oro, $plata, $bronce);
         return $result;
@@ -140,12 +141,14 @@ class logro {
                     $this->oro = true;
                 }
             }
-            
         }
     }
-    public $oro = false;
-    public $plata = false;
-    public $bronce = false;
+    function get_nombre_logro() {
+        if ( $this->oro ) return 'oro';
+        if ( $this->plata ) return 'plata';
+        if ( $this->bronce ) return 'bronce';
+        return '';
+    }
     function get_icon($votos) {
         $this->evaluate_progress($votos);
         $result = '';

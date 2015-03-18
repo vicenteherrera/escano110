@@ -39,6 +39,16 @@ class item_avotable_lista extends item_avotable_base {
         $result .= '</div>';
         
 		$result .= '<img src="'.website::$base_url.'/img/tipos/'.$tipo_class[$d['tipo']].'.png" alt="" class="miniatura_logo" />';
+        if ( $d['tipo'] == avotable::enum_tipo_pregunta ) {
+            if ( $d['texto_respuesta'] != '' ) {
+                $img_resp = 'respondida.png';
+            } else {
+                $img_resp = 'no_respondida.png';
+            }
+            $result .= '<img src="'.website::$base_url.'/img/'.$img_resp.'" 
+                style="right: 120px; top: 5px;"
+                alt="" class="miniatura_logo" />';
+        }
         
         $logro = new logro($d['tipo']);
         //$result .= $logro->get_icon($d['votos']);
@@ -57,8 +67,13 @@ class item_avotable_lista extends item_avotable_base {
         
         $result .= $d['texto_pregunta'].$d['resumen'] .'</div>';
         
-        $result .= 'Finalización: '.$this->get_descriptive_time_to_finish(). "<br />";
-        
+        if ( $d['tipo'] == avotable::enum_tipo_pregunta ) {
+            if ($d['texto_respuesta'] == '' ) {
+                $result .= 'Tiempo sin responder: '.$this->get_days_without_answer(). "<br />";
+            }
+        } else {
+            $result .= 'Finalización: '.$this->get_descriptive_time_to_finish(). "<br />";
+        }
 		$result .= '<br /><b>'.$this->get_action_noun().' hasta ahora: '.$d['votos'].'</b><br />';
         $result .= '<a href="'.$target.'" class="leer_mas">Leer más y '.$this->get_action_verb(true).'</a>';
 		$result .= '</div>';

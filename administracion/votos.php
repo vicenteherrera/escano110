@@ -12,14 +12,20 @@ require "../check_user.inc.php";
 
 //===========================================================================================
 
-echo '<h1>Apoyos</h1>';
 if ( ! command_select::is_set_selected_id() ) {
     echo 'URL incorrecta';
     return;
 }
 
-$a->get('id_propuesta')->set_restricted_value(command_select::get_selected_id());
-$a->get('id_propuesta')->set_visible();
+$avotable_data = new avotable_data(command_select::get_selected_id());
+$avotable_data->load();
+
+echo '<h1>Apoyos '.$avotable_data->get_nombre_tipo().' '.$avotable_data->id.': ';
+echo $avotable_data->titulo.'</h1>';
+
+$a->get('id_propuesta')
+    ->set_restricted_value(command_select::get_selected_id())
+    ->set_visible(false);
 $a->__echo();
 
 

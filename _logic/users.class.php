@@ -57,6 +57,7 @@ class users extends table_data {
         $this->print_actions = true;
         
         //----------------------------------------------------
+        
         parent::init_config();
         
         $this->get('id')->set_visible(false);
@@ -65,12 +66,12 @@ class users extends table_data {
             ->add_validation_rule(new validation_unique())
             ->set_required();
             
-        if ( $this->command_name != 'new' ) {
+        if ( $this->get_command_name() != 'new' ) {
             $this->get('username')->set_readonly();
         }
-        
-        $this->get('password')->set_required();
-        
+        if ( $this->get_command_name() == 'print' || $this->get_command_name() == 'print') {
+            $this->get('password')->set_visible('false');
+        }
 
         //--------------------------------------------------
         /*
