@@ -128,7 +128,7 @@ class logro {
         $this->plata = false;
         $this->oro = false;
         //$votos
-        $this->value = rand(1, $this->min_plata)*2;  /* ALEATORIO; QUITAR EN PRODUCCIÓN */
+        //$this->value = rand(1, $this->min_plata)*2;  /* ALEATORIO; QUITAR EN PRODUCCIÓN */
         
         if ( $this->value < $this->min_bronce ) {
         } else {
@@ -144,6 +144,7 @@ class logro {
         }
     }
     function get_nombre_logro() {
+        $this->evaluate_progress($this->value);
         if ( $this->oro ) return 'oro';
         if ( $this->plata ) return 'plata';
         if ( $this->bronce ) return 'bronce';

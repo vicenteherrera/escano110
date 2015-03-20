@@ -22,6 +22,10 @@ class avotable_data extends apersistant {
    public $id_parlamentario;
    public $texto_respuesta;
    
+   public $comunicado_oro;
+   public $comunicado_plata;
+   public $comunicado_bronce;
+   
    public $_table_name = 'avotable';
    
    public function get_nombre_tipo() {

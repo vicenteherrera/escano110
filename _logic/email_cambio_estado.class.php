@@ -53,6 +53,9 @@ class email_cambio_estado extends email {
         $this->subject = $this->get_subject();
         parent::send();
         
+        $this->to = 'info@escaño110.org';
+        //parent::send();
+        
     }
     private function get_subject() {
         $pre = '[#'.$this->avotable_data->id.'] ';
@@ -92,13 +95,13 @@ class email_cambio_estado extends email {
     }
     function get_message_registro() {
         $result = 'Para completar tu registro de usuario con estos datos, visita el enlace proporcionado más abajo:<br />'; 
-        $result .= '<ul>';
-        $result .= '<li>Email / usuario: brunopadilla+prueba3@gmail.com</li>';
-        $result .= '<li>Nombre: Bruno</li>';
-        $result .= '<li>Apellidos: Padilla del Valle</li>';
-        $result .= '</ul>';
-        $result .= 'Utiliza este enlace una sola vez para activar tu cuenta:</li>';
-        $result .= 'http://www.escaño110.org/perfil/activate.php?k=21AE931EA8850B6DE19CEAE293C';
+        //$result .= '<ul>';
+        //$result .= '<li>Email / usuario: brunopadilla+prueba3@gmail.com</li>';
+        //$result .= '<li>Nombre: Bruno</li>';
+        //$result .= '<li>Apellidos: Padilla del Valle</li>';
+        //$result .= '</ul>';
+        //$result .= 'Utiliza este enlace una sola vez para activar tu cuenta:</li>';
+        //$result .= 'http://www.escaño110.org/perfil/activate.php?k=21AE931EA8850B6DE19CEAE293C';
         return $result;
     }
 
@@ -129,9 +132,9 @@ class email_cambio_estado extends email {
     }
 
     function get_message_exitosa() {
-        $result = 'Tu '.$this->avotable_data->get_nombre_tipo().' en Escaño110 ha alcanzado el logro'; 
-        //$result .= strtoupper($this->logro->get_nombre_logro()).': ';
-        $result .= ' Exitosa:<br />';
+        $result = 'Tu '.$this->avotable_data->get_nombre_tipo().' en Escaño110 ha alcanzado el logro '; 
+        if ( isset( $this->logro ) ) $result .= strtoupper($this->logro->get_nombre_logro()).':<br />';
+        else $result .= 'Exitosa:<br />';
         $result .= $this->get_url().'<br /><br />';
         $result .= 'Te damos la enhorabuena y te animamos a seguir participando con nuevas iniciativas en ';
         $result .= 'esta plataforma, porque #somosel110.';

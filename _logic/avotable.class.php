@@ -176,7 +176,7 @@ class avotable extends table_data {
         }
     }
     public function send_email_state_changed() {
-        if ( $this->get('estado')->has_changed() ) {
+        if ( $this->get('estado')->has_changed() || $this->get_command_name() == 'insert' ) {
             $avotable = new avotable_data();
             $avotable->set_data($this->columns_col->get_array());
             $email = new email_cambio_estado();
