@@ -11,6 +11,7 @@ website::$current_page->add_web_object( new user_ui() );
 website::$current_page->add_web_object( new link_button() );
 website::$current_page->add_web_object( new table_data_webobject() );
 website::$current_page->add_web_object( new web_calendar() );
+website::$current_page->add_web_object( new overlib() );
 //===========================================================================
 if ( web_page::is_file_action() ) return;
 ob_start();
@@ -23,10 +24,16 @@ website::$current_page->send_http_headers();
     <!-- To force not-metro IE -->
     <meta http-equiv="X-UA-Compatible"content="requiresActiveX=true" />
 	<title>Escaño 110</title>
-    <?php echo website::$current_page->print_html_header();?>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
     <meta name="description" content="Escaño 110 es una plataforma web para fomentará la participación ciudadana en la vida política andaluza, propiciando una mayor comunicación entre movimientos ciudadanos y gestores públicos." />
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>        
+    <?php echo website::$current_page->print_html_header();?>
+    <link media="all" href="<?php echo website::$base_url; ?>/_ext/wchar/wChar.css" type="text/css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'> 
+    <!--
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    -->
+    <script src="<?php echo website::$base_url; ?>/_ext/wchar/assets/jquery.1.9.1.min.js" language="JavaScript" type="text/javascript"></script>
+	<script src="<?php echo website::$base_url; ?>/_ext/wchar/wChar.min.js" language="JavaScript" type="text/javascript"></script>
+      
  </head>
  <body>
     <?php echo website::$current_page->getHtmlPostBodyIni();

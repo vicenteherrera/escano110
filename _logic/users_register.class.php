@@ -67,7 +67,7 @@ class users_register extends table_data {
             'surname', 
             'password',
             'password2',
-            new control_literal('<br />El registro implica la aceptación de la <a href="../politica-de-privacidad">política de privacidad</a>.<br /><br />')
+            new control_literal('<br />El registro implica la aceptación de la <a href="../aviso-legal.php">política de privacidad</a> y las <a href="../condiciones-de-uso.php">condiciones de uso</a> del sitio.<br /><br />')
         );
     }
     

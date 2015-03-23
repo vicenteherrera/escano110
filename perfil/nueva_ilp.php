@@ -22,3 +22,4 @@ if ( ! website::$user->is_logged_in() ) {
 }
 
 $a->__echo();
+?>

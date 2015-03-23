@@ -28,6 +28,10 @@ class preguntas extends avotable {
             'votos',
             'fecha_creada',
         );
+        $this->columns_required = array(
+            'titulo',
+            'texto_pregunta'
+        );
         parent::init_config();
         
         $this->get('estado')->set_options(

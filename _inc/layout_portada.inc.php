@@ -21,13 +21,19 @@ website::$current_page->send_http_headers();
 	<meta charset="utf-8"> 
 	<title>Escaño 110</title>
     <?php echo website::$current_page->print_html_header();?>
+    <link media="all" href="<?php echo website::$base_url; ?>/_ext/wchar/wChar.css" type="text/css" rel="stylesheet">
     <meta name="description" content="Escaño 110 es una plataforma web para fomentará la participación ciudadana en la vida política andaluza, propiciando una mayor comunicación entre movimientos ciudadanos y gestores públicos." />    
     <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css" />
     <!-- CSS file -->
     <link rel="stylesheet" href="./slider/css/flexslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="./_inc/cookies.css" rel="stylesheet" />
     <!-- Javascript file -->
-    <script type="text/javascript" src="./slider/js/jquery.1.6.2.min.js"></script>
+    <!--
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    -->
+    <script src="<?php echo website::$base_url; ?>/_ext/wchar/assets/jquery.1.9.1.min.js" language="JavaScript" type="text/javascript"></script>
+
+
     <script type="text/javascript" src="./slider/js/jquery.flexslider-min.js"></script>
     <script type="text/javascript">
         //https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties

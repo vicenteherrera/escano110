@@ -78,10 +78,51 @@ class avotable extends table_data {
         
         $this->key_set = new key_set('id');
         
+        $this->upload_size_limit = 1024*1024*1;
         
         /* ****************************************************************** */
         parent::init_config();
         /* ****************************************************************** */
+        
+        $this->get('titulo')
+            ->set_limit_len(60)
+            ->set_help_text('Indique un título de una sola linea para el elemento');
+        
+        //if ( isset ( $this->columns_col['resumen'] ) ) {
+            $this->get('resumen')
+                ->set_limit_len(230)
+                ->set_help_text('Indique un breve resumen para la miniatura del elemento');
+        //}  
+        if ( isset ( $this->columns_col['descripcion'] ) ) {
+            $this->get('descripcion')
+                ->set_limit_len(2500)
+                ->set_help_text('Indique el texto descriptivo completo del artículo');
+        }
+        if ( isset ( $this->columns_col['texto_pregunta'] ) ) {
+            $this->get('texto_pregunta')
+                ->set_limit_len(2000)
+                ->set_help_text('Indique el texto de la preguta que desea realizar al parlamentario o parlamentaria');
+        }
+        if ( isset ( $this->columns_col['url_descripcion'] ) ) {
+            $this->get('url_descripcion')
+                ->set_help_text('Si lo desea, proporcione un enlace donde se especifique con más detalle los objetivos de este elemento');
+        }
+        if ( isset ( $this->columns_col['url_articulo'] ) ) {
+            $this->get('url_articulo')
+                ->set_visible(false)
+                ->set_help_text('Indique la URL del artículo del blog de Escaño 110 donde se menciona este elemento');
+        }
+        if ( isset ( $this->columns_col['url_video'] ) ) {
+            $this->get('url_video')
+                ->set_help_text('Si lo desea, proporcione un enlace a un video de Youtube donde se describa este elemento');
+        }
+        if ( isset ( $this->columns_col['codigo'] ) ) {
+            $this->get('codigo')
+                ->set_limit_len(80*5)
+                ->set_help_text('Proporcione el código con el que ha sido registrada la ILP');
+        
+        }
+        
         $this->filter_fields = array_diff($this->columns_table_view,array('imagen','votos'));
         $this->filter_ranges = array( 'votos' );
         $cmd_select = new command_select(website::$base_url.'/administracion/votos.php/');
@@ -131,20 +172,20 @@ class avotable extends table_data {
         return true;
     }
     public function after_init_values() {
+        $this->set_creator_fullname(); 
         if ( $this->get_command_name() == 'update' ) {
             if ( $this->get('estado')->has_changed() ) {
-                //die ('ok');
                 if ( $this->get('estado')->get_value() == self::enum_estado_admitida ) {
                     if ( $this->get('fecha_admitida')->get_value() == '' ) {          
                         $this->get('fecha_admitida')->set_value( date('Y-m-d H:i:s') )->set_changed();
                     }
-                    if ( $this->get('fecha_cerrada')->get_value() == '' ) {          
+                    if ( $this->get('fecha_cerrada')->get_value() == '' ) {
                         switch($this->get('tipo')->get_value()) {
                             case avotable::enum_tipo_ilp:
                                 $this->get('fecha_cerrada')->set_value(date('Y-m-d 23:59:59', strtotime("+6 months", strtotime(date('Y-m-d')))))
-                                    ->set_changed();        
+                                    ->set_changed(); 
                             break;
-                            case avotable::enum_tipo_pregunta:
+                            case avotable::enum_tipo_propuesta:
                                 $this->get('fecha_cerrada')->set_value(date('Y-m-d 23:59:59', strtotime("+3 months", strtotime(date('Y-m-d')))))
                                     ->set_changed();
                             break;
@@ -158,11 +199,7 @@ class avotable extends table_data {
                     $this->get('fecha_cerrada')->set_value( date('Y-m-d H:i:s') )->set_changed();            
                 }
             }
-        } else {
-            $this->set_creator_fullname();
-            
-            
-        }
+        } 
     }
     protected function set_creator_fullname() { 
         $id_usu = $this->get('id_usuario')->get_value();
@@ -184,4 +221,5 @@ class avotable extends table_data {
             $email->send();
         }
     }
+
 }
