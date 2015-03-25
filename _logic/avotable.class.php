@@ -11,7 +11,32 @@ class avotable extends table_data {
     const enum_estado_exitosa = 2;
     const enum_estado_cerrada = 3;
     const enum_estado_rechazada = 4;
-                
+    
+    public static function get_estado_text($int_estado) {
+        switch($int_estado) {
+            case self::enum_estado_enviada :
+                return 'Enviada';
+            case self::enum_estado_admitida :
+                return 'Admitida';
+            case self::enum_estado_exitosa :
+                return 'Exitosa';
+            case self::enum_estado_cerrada :
+                return 'Cerrada';
+            case self::enum_estado_rechazada :
+                return 'Rechazada';
+        }
+    }
+    public static function get_tipo_text($int_tipo) {
+        switch($int_tipo) {
+            case self::enum_tipo_propuesta :
+                return 'Propuesta';
+            case self::enum_tipo_ilp :
+                return 'ILP';
+            case self::enum_tipo_pregunta :
+                return 'Pregunta';
+        }
+    }
+    
     public $table_name = 'avotable';
     
     

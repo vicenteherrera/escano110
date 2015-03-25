@@ -7,6 +7,8 @@ class item_avotable_lista extends item_avotable_base {
      */
     public $item = null;   
     
+    public static $my_items = false;
+    
     /*
     const enum_tipo_propuesta = 1;
     const enum_tipo_ilp = 2;
@@ -67,6 +69,7 @@ class item_avotable_lista extends item_avotable_base {
         
         $result .= $d['texto_pregunta'].$d['resumen'] .'</div>';
         
+        $result .= '<div class="acciones_lista" style="width:200px; display:inline-block; vertical-align:top;">';
         if ( $d['tipo'] == avotable::enum_tipo_pregunta ) {
             if ($d['texto_respuesta'] == '' ) {
                 $result .= 'Tiempo sin responder: '.$this->get_days_without_answer(). "<br />";
@@ -76,6 +79,38 @@ class item_avotable_lista extends item_avotable_base {
         }
 		$result .= '<br /><b>'.$this->get_action_noun().' hasta ahora: '.$d['votos'].'</b><br />';
         $result .= '<a href="'.$target.'" class="leer_mas">Leer más y '.$this->get_action_verb(true).'</a>';
+        
+        $result .= '</div>';
+        
+        
+        $result .= '<div class="acciones_lista" style="width:300px; display:inline-block; vertical-align:top;">';
+        
+        if ( self::$my_items ) {
+            
+            $result .= 'Estado: '.avotable::get_estado_text($d['estado']);
+        } else {
+                
+            $usuario = new usuario($d['id_usuario']);
+            $usuario->load();
+            
+            $avatar = $usuario->avatar;
+            if ($avatar!='') {
+                $img = website::$base_url.'/get_img_user_min.php?view_mode=thumb&file='.urlencode($avatar);
+            } else {
+                $img = website::$base_url.'/img/noavatar_min.png';
+            }
+            $img = '<img src="'.$img.'" alt="" style="float:left; margin: 8px 8px 0 0; width:40px; height:40px; vertical-align: middle;" />';
+            $result .= 'Promotor/a:<br />';  
+            $result .= '<a href="'.website::$base_url.'/promotor.php?id='.$d['id_usuario'].'" style="line-height: 50px;">';
+            $result .= $img;
+            $result .= $usuario->get_full_name();
+            $result .= '</a>';
+        }
+        
+        $result .= '</div>';
+        
+        
+        
 		$result .= '</div>';
         
 		$result .= '</div><br style="clear:both;" />';

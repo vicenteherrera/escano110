@@ -339,9 +339,9 @@ h2 {
 
 .network_icon img {
     /* float: right; */
-    margin-right: 40px;
+    margin-right: 14px;
     margin-top: 13px;
-    margin-left: -19px;
+    margin-left: 5px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -415,7 +415,7 @@ h2 {
 
 
 .header_user_info_name {
-    margin: 30px 50px 0 3px !important;
+    margin: 35px 50px 0 3px !important;
 }
 .actions_cell {
 	font-size: 12px;

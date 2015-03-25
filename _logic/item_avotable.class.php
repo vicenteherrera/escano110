@@ -102,6 +102,31 @@ class item_avotable extends item_avotable_base {
         
         $result .= '<div class="propuesta_side">';
         
+        $result .= '<div class="acciones_lista" style="width:300px; display:inline-block; vertical-align:top;">';
+        
+        $usuario = new usuario($d->id_usuario);
+        $usuario->load();
+        
+        $avatar = $usuario->avatar;
+        if ($avatar!='') {
+            $img = website::$base_url.'/get_img_user_min.php?view_mode=thumb&file='.urlencode($avatar);
+        } else {
+            $img = website::$base_url.'/img/noavatar_min.png';
+        }
+        $img = '<img src="'.$img.'" alt="" style="float:left; margin: 8px 8px 0 0; width:40px; height:40px; vertical-align: middle;" />';
+        $result .= 'Promotor/a:<br />';  
+        $result .= '<a href="'.website::$base_url.'/promotor.php?id='.$d->id_usuario.'" style="line-height: 50px;">';
+        $result .= $img;
+        $result .= $usuario->get_full_name();
+        $result .= '</a>';
+
+        
+        $result .= '</div><br /><br />';
+        
+        
+        
+        
+        
         $votos = $d->votos;               
         $logro = new logro($d->tipo);
         //$votos = $logro->get_value();
@@ -197,11 +222,11 @@ class item_avotable extends item_avotable_base {
             //TODO: Firmas por apoyos
             
         } else if ( $d->estado == avotable::enum_estado_cerrada ) { //Cerrada
-            $result .= 'Este elemento está cerrado<br />';
+            $result .= 'Este elemento está cerrado<br /><br />';
             $result .= "<span class=\"numero_votos\">$d->votos ".$this->get_action_noun(true)."</span><br />";
             
         } else if ( $d->estado == avotable::enum_estado_rechazada ) { //Rechazada
-            $result .= 'Este elemento no ha sido aceptado para su publicación.<br />';
+            $result .= 'Este elemento no ha sido aceptado para su publicación.<br /><br />';
         }
         
 

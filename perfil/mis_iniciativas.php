@@ -1,6 +1,8 @@
 <?php
 require_once('config.inc.php');
 
+item_avotable_lista::$my_items = true;
+
 $a = new avotable();
 $a->pag_items_pag = 6;
 $a->filter = true;

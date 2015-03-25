@@ -17,7 +17,9 @@ class users_register extends table_data {
             'name',
             'surname',
             'description',
-            'type', 
+            'type',
+            'web',
+            'date_of_birth', 
             'password',
             'password2',
             'avatar',
@@ -35,7 +37,8 @@ class users_register extends table_data {
             'password'=>'Contraseña',
             'password2'=>'Repita contraseña',
             'avatar' => 'Fotografía/Logotipo',
-            'group'=>'Grupo'
+            'group'=>'Grupo',
+            'date_of_birth' => 'Fecha de nacimiento'
         ); 
         $this->columns_format['type'] = array('person'=>'Persona física','organization'=>'Organización');
         $this->columns_format['avatar'] = 'image';    
@@ -43,10 +46,13 @@ class users_register extends table_data {
         $this->columns_format['username'] = 'email';
         $this->columns_format['password'] = 'password';
         $this->columns_format['password2'] = 'password';
+        $this->columns_format['date_of_birth'] = 'date';
+        $this->columns_format['web'] = 'url';
         $this->columns_required = array(
             'username',
             'name',
             'surname',
+            'date_of_birth',
             'description',
             'type', 
             'password',
@@ -68,8 +74,12 @@ class users_register extends table_data {
         parent::init_config();
         //------------------------------------------------------
         
-        $this->get('type')->bind_to_column(array('surname'),'person');
-        $this->get('type')->bind_to_column(array('description'),'organization');
+        $this->get('type')->bind_to_column(array('surname','date_of_birth'),'person');
+        $this->get('type')->bind_to_column(array('description','web'),'organization');
+        
+        $this->get('description')
+            ->set_help_text('Indique una breve descripción de la organización')
+            ->set_limit_len('1000');
         unset($this->commands['table']);
         unset($this->commands['delete']);
         
@@ -90,12 +100,14 @@ class users_register extends table_data {
         $this->control_group = new control_edit($this);
 
         $this->control_group->add(
-             'id',
-             'type',
+            'id',
+            'type',
             'username',
             'name',
             'surname', 
+            'date_of_birth',
             'description',
+            'web',
             'avatar',
             'password',
             'password2',
