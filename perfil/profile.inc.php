@@ -7,7 +7,7 @@ if ( ! website::$user->is_logged_in() ) {
 
 echo "<div style=\"padding-left: 30px;\"><h1>Perfil de usuario</h1>";
 
-echo "<div style=\"width: 350px; margin:00px 20px 9px 0; padding: 15px 15px; display: inline-block; vertical-align: top; line-height: 20px;\">";
+echo "<div style=\"width: 350px; margin:20px 20px 9px 0; padding: 15px 15px; display: inline-block; vertical-align: top; line-height: 20px;\">";
 
 $avatar = website::$user->get('avatar');
 if ($avatar!='') {
