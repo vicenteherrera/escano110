@@ -9,16 +9,16 @@
  * Theme - classic
  ***********************************/
 .wChar-theme-classic.wChar {
-    height: 25px;
-    line-height: 25px;
-    margin: 2px;
-    padding: 0 10px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-
-    color: #FAFAFA;
-    background-color: #CACACA;
+    height: 20px;
+  line-height: 20px;
+  margin: 2px;
+  padding: 0 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  font-size: 11px;
+  color: #fff;
+  background-color: #d0d0d0;
 }
 .wChar-theme-classic.wChar-min {
     background-color: #C47451;

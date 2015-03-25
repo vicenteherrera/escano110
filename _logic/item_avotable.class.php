@@ -57,13 +57,13 @@ class item_avotable extends item_avotable_base {
             $p->load_recursive();
             
             $result .= '<h3>Parlamentario/a</h3>';
-            $result .= '<div style="width: 160px; display:inline-block;">';
+            $result .= '<div style="width: 160px; display:inline-block; text-align:left;">';
             if ( ! empty( $p->foto ) ) {
                 $result .= '<img src="'.website::$base_url.'/get_img_parlamentario.php?file='.$p->foto.'&view_mode=thumb" alt="Foto '.$p->nombre.' '.$p->apellidos.'" /><br />';
             }
             $result .= '<!-- id: '.$p->id.' -->';
             $result .= '<b>'.$p->nombre.' '.$p->apellidos.'</b><br />';
-            $result .= '<i>'.info::get_provincias_andalucia($p->circinscripcion).'</i>';
+            $result .= '<i>'.info::get_provincias_andalucia($p->circinscripcion).'</i><br /><br />';
             
             foreach ($p->_comisiones as $comision) {
                 $result .= $comision->nombre."<br />";
@@ -192,7 +192,7 @@ class item_avotable extends item_avotable_base {
             
             
         } else if ( $d->estado == avotable::enum_estado_exitosa ) { //Exitosa
-            $result .= '¡Éxito alcanzado!<br />';
+            $result .= '¡Éxito alcanzado!<br /><br />';
             $result .= "<span class=\"numero_votos\">$d->votos ".$this->get_action_noun(true)."</span><br />";
             //TODO: Firmas por apoyos
             

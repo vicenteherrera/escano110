@@ -88,11 +88,11 @@ class avotable extends table_data {
             ->set_limit_len(60)
             ->set_help_text('Indique un título de una sola linea para el elemento');
         
-        //if ( isset ( $this->columns_col['resumen'] ) ) {
+        if ( isset ( $this->columns_col['resumen'] ) ) {
             $this->get('resumen')
                 ->set_limit_len(230)
                 ->set_help_text('Indique un breve resumen para la miniatura del elemento');
-        //}  
+        }  
         if ( isset ( $this->columns_col['descripcion'] ) ) {
             $this->get('descripcion')
                 ->set_limit_len(2500)
@@ -118,7 +118,7 @@ class avotable extends table_data {
         }
         if ( isset ( $this->columns_col['codigo'] ) ) {
             $this->get('codigo')
-                ->set_limit_len(80*5)
+                ->set_limit_len(10)
                 ->set_help_text('Proporcione el código con el que ha sido registrada la ILP');
         
         }

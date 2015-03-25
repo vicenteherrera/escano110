@@ -4,6 +4,17 @@ class logro {
 	const oro = 1;
 	const plata = 2;
 	const bronce = 3;
+    
+    public static $min_oro_ilp = 5000;
+    public static $min_plata_ilp = 2000;
+    public static $min_bronce_ilp = 500;
+    public static $min_oro_pregunta = 50;
+    public static $min_plata_pregunta = 25;
+    public static $min_bronce_pregunta = 10;
+    public static $min_oro_propuesta = 500;
+    public static $min_plata_propuesta = 110;
+    public static $min_bronce_propuesta = 50;
+    
 	/**
 	 * @var int
 	 */

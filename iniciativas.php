@@ -8,10 +8,14 @@ $a->filter = true;
 $a->filter_searchs = array('pregunta','respuesta','titulo', 'resumen');
 $a->order_default_column = 'fecha_cerrada';
 $a->order_default_order = 'ASC';
+
+$a->sql_where_forced = 
+    "((`estado` = '".avotable::enum_estado_admitida."' OR ".
+    " `estado` = '".avotable::enum_estado_exitosa."' ) AND ".
+    "( DATE_ADD(fecha_cerrada, INTERVAL 7 DAY) > DATE(NOW()) OR fecha_cerrada='' OR fecha_cerrada='0000-00-00 00:00:00' ))";
 $a->init_config();
 //$a->sql_where_forced = "`estado` = '1'";
 $a->get('estado')->set_restricted_value(1);
-//$a->sql_where_forced = "`estado` = '1' AND DATE(fecha_cerrada)>DATE(NOW())";
 $a->commands['table']->item_prototype = new item_avotable_lista();
 $a->commands['table']->pagination = new pagination_ui( $a );
 $a->commands['table']->pagination->show_page_count = false;

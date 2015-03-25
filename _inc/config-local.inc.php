@@ -16,7 +16,7 @@
 	//Website configuration
 	website::$default_web_page_title = 'Escaño 110';
     website::set_wip_dates($wip_start, $wip_end);
-	website::set_developer_mode( in_array(strtolower($_SERVER['SERVER_NAME']), array('localhost','127.0.0.1','192.168.1.100') ) );
+	website::set_developer_mode( false || in_array(strtolower($_SERVER['SERVER_NAME']), array('localhost','127.0.0.1','192.168.1.100') ) );
 	//url::set_url_separator('&amp;');
 	url::set_url_separator('&');
 	  
@@ -55,10 +55,6 @@
 	website::$user = new user(website::$database);
     //website::$user->user_table_columns['id_empresa']='id_empresa';
     website::$user->user_table_columns['date_of_birth']='date_of_birth';
-    website::$user->user_table_columns['type']='type';
-    website::$user->user_table_columns['avatar']='avatar';
-    website::$user->user_table_columns['description']='description';
-    website::$user->user_table_columns['date_of_birth']='date_of_birth';
     website::$user->group_names = array(
         'administrador'=>'Administrador/a',
         'usuario'=>'Usuario/a'
@@ -66,6 +62,7 @@
 	website::$user->load();
 	
 	if ( website::in_developer_mode() ) {
+	   
 	   website::$base_url = 'http://127.0.0.1/escano110';
     }
 

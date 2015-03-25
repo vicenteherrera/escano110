@@ -39,7 +39,7 @@ function process_exitos($tipo_iniciativa) {
         
     $sql = "SELECT `avotable`.`id` as id_avotable, fw_users.`username` as username FROM avotable ".
         "INNER JOIN fw_users ON avotable.`id_usuario`= fw_users.id ".
-        "WHERE avotable.tipo = '{@0}' AND fecha_cerrada <= DATE(NOW()) AND estado='{@1}'";
+        "WHERE avotable.tipo = '{@0}' AND fecha_cerrada <= NOW() AND estado='{@1}'";
     $sql_str = new sql_str($sql, $tipo_iniciativa, avotable::enum_estado_admitida);
     $avotables = website::$database->execute_get_array( $sql_str );
     
@@ -49,15 +49,23 @@ function process_exitos($tipo_iniciativa) {
         $avotable_data->load();
         $logro = new logro( $avotable_data->tipo );
         $logro->set_value( $avotable_data->votos );
-
         $logro->min_oro = 3;
         $logro->min_plata = 2;
         $logro->min_bronce = 1;
 
-        $logro->evaluate_progress($avotable_data->votos);        
-        if ( $logro->bronce ) $nuevo_estado = avotable::enum_estado_exitosa;
-        else $nuevo_estado = avotable::enum_estado_cerrada;
+        $logro->evaluate_progress($avotable_data->votos);   
         
+        $email = new email_logro();
+        $email->set_avotable_data( $avotable_data );
+        $email->set_logro( $logro );
+             
+        if ( $logro->bronce ) {
+            $nuevo_estado = avotable::enum_estado_exitosa;
+            //$email->send();
+        } else {
+            $nuevo_estado = avotable::enum_estado_cerrada;
+            //$email->send();
+        }
         $sql_str_update = new sql_str($sql_update, $nuevo_estado, $avotable_data->id);
         $ok = website::$database->execute_nonquery($sql_str_update);        
     }

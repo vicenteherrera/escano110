@@ -9,32 +9,49 @@ class users_register extends table_data {
     public $email_activation_from = '"Escaño110" <info@escaño110.org>';
     
     public function init_config() {
-        if ($this->initialised) return;
+        if ( $this->initialised ) return;
         $this->autocomplete = false;
         $this->columns = array(
             'id',
             'username',
             'name',
-            'surname', 
+            'surname',
+            'description',
+            'type', 
             'password',
             'password2',
+            'avatar',
             'group',
             'activation',
             'verified'
         );
          $this->columns_title = array(
             'id'=>'id',
+            'type'=>'Tipo de cuenta',
             'username'=>'Correo electrónico / Usuario',
             'name'=>'Nombre',
             'surname'=>'Apellidos',
+            'description' => 'Descripción',
             'password'=>'Contraseña',
             'password2'=>'Repita contraseña',
+            'avatar' => 'Fotografía/Logotipo',
             'group'=>'Grupo'
-        );       
+        ); 
+        $this->columns_format['type'] = array('person'=>'Persona física','organization'=>'Organización');
+        $this->columns_format['avatar'] = 'image';    
+        $this->columns_format['description'] = 'textarea';   
         $this->columns_format['username'] = 'email';
         $this->columns_format['password'] = 'password';
         $this->columns_format['password2'] = 'password';
-        $this->columns_required_all = true;
+        $this->columns_required = array(
+            'username',
+            'name',
+            'surname',
+            'description',
+            'type', 
+            'password',
+            'password2'
+        );
         $this->send_button_mesage = 'Crear usuario';
         $this->save_continue_url = website::$base_url.'/';
         $this->save_message = 'Se ha enviado un mensaje de correo electrónico para verificar su cuenta de usuario.<br />
@@ -46,8 +63,13 @@ class users_register extends table_data {
         
         $this->default_command = 'new';
         
+        $this->upload_size_limit = 1024*1024;
+        //------------------------------------------------------
         parent::init_config();
+        //------------------------------------------------------
         
+        $this->get('type')->bind_to_column(array('surname'),'person');
+        $this->get('type')->bind_to_column(array('description'),'organization');
         unset($this->commands['table']);
         unset($this->commands['delete']);
         
@@ -58,17 +80,28 @@ class users_register extends table_data {
         $this->get('password2')->add_validation_rule(new validation_match($this->get('password')));
         $this->get('activation')->set_visible(false)->set_forced_value( $this->get_activation_key() );
         $this->get('verified')->set_visible(false)->set_forced_value(0);
+        
+        if ( isset($this->columns_col['avatar'] ) ) {
+            $this->get('avatar')->set_generator_url(website::$base_url.'/get_img_user.php');
+            //$this->upload_dir = website::$base_dir.'/__upload/avotable/';
+        }
+        
         //------------------------------------------------------
         $this->control_group = new control_edit($this);
+
         $this->control_group->add(
              'id',
+             'type',
             'username',
             'name',
             'surname', 
+            'description',
+            'avatar',
             'password',
             'password2',
             new control_literal('<br />El registro implica la aceptación de la <a href="../aviso-legal.php">política de privacidad</a> y las <a href="../condiciones-de-uso.php">condiciones de uso</a> del sitio.<br /><br />')
         );
+
     }
     
     protected $activation = '';
@@ -172,7 +205,8 @@ class users_register extends table_data {
         //invoke the PHP mail function
         mail('', $subject, $message, $headers);
 
-
-    
+    }
+    public function after_init_values() {
+        if ( $this->get('type')=='organizacion' ) $this->get('avatar')->set_title('Logotipo');
     }
 }

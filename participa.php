@@ -87,7 +87,8 @@ if ( ! website::$user->is_logged_in() ) {
     $user->init_config();
     
     if ( $user->command_name == "" ) {
-        echo "Rellena todos los campos del siguiente formulario para crear un usuario y participar en esta web.<br /><br />";
+        echo "Rellena todos los campos del siguiente formulario para crear un usuario y participar en esta web.<br />";
+        echo "¿Ya tienes cuenta de usuario? <a href=\"".website::$base_url."/inicia-sesion.php\">Inicia sesión con tu cuenta.<a/><br /><br />";
     }
     
     $user->__echo();

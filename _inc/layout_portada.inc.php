@@ -33,7 +33,6 @@ website::$current_page->send_http_headers();
     -->
     <script src="<?php echo website::$base_url; ?>/_ext/wchar/assets/jquery.1.9.1.min.js" language="JavaScript" type="text/javascript"></script>
 
-
     <script type="text/javascript" src="./slider/js/jquery.flexslider-min.js"></script>
     <script type="text/javascript">
         //https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties

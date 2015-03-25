@@ -54,7 +54,7 @@ class email_cambio_estado extends email {
         parent::send();
         
         $this->to = 'info@escaño110.org';
-        //parent::send();
+        parent::send();
         
     }
     private function get_subject() {

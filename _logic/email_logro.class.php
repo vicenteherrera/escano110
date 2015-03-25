@@ -59,8 +59,9 @@ class email_logro extends email {
     }
     private function get_subject() {
         $pre = '[#'.$this->avotable_data->id.'] ';
-        $pre .= ucfirst($this->avotable_data->get_nombre_tipo()).' ';
-        return $pre.'exitosa';
+         if ( isset( $this->logro ) ) $logro = strtoupper($this->logro->get_nombre_logro());
+        $pre .= 'Logro alcanzado: '.$logro;
+        return $pre;
     }
     private function get_message() {
         return $this->get_message_exitosa();
