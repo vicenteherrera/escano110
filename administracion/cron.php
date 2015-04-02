@@ -19,9 +19,9 @@ function process_emails_logros($tipo_logro, $nivel_logro, $tipo_iniciativa) {
         $logro = new logro( $avotable_data->tipo );
         $logro->set_value( $avotable_data->votos );
         
-        $logro->min_oro = 3;
-        $logro->min_plata = 2;
-        $logro->min_bronce = 1;
+        //$logro->min_oro = 3;
+        //$logro->min_plata = 2;
+        //$logro->min_bronce = 1;
         
         $email = new email_logro();
         $email->set_avotable_data( $avotable_data );
@@ -49,15 +49,15 @@ function process_exitos($tipo_iniciativa) {
         $avotable_data->load();
         $logro = new logro( $avotable_data->tipo );
         $logro->set_value( $avotable_data->votos );
-        $logro->min_oro = 3;
-        $logro->min_plata = 2;
-        $logro->min_bronce = 1;
+        
+        //$logro->min_oro = 3;
+        //$logro->min_plata = 2;
+        //$logro->min_bronce = 1;
 
         $logro->evaluate_progress($avotable_data->votos);
              
         if ( $logro->bronce ) {
-            $nuevo_estado = avotable::enum_estado_exitosa;
-            
+            $nuevo_estado = avotable::enum_estado_exitosa;  
         } else {
             $nuevo_estado = avotable::enum_estado_cerrada;
         }
@@ -71,17 +71,17 @@ function process_exitos($tipo_iniciativa) {
     }
 }
 
-process_emails_logros( 'comunicado_bronce', 1, avotable::enum_tipo_ilp);
-process_emails_logros( 'comunicado_plata',  2, avotable::enum_tipo_ilp);
-process_emails_logros( 'comunicado_oro',    3, avotable::enum_tipo_ilp);
+process_emails_logros( 'comunicado_bronce', logro::$min_bronce_ilp, avotable::enum_tipo_ilp);
+process_emails_logros( 'comunicado_plata',  logro::$min_plata_ilp, avotable::enum_tipo_ilp);
+process_emails_logros( 'comunicado_oro',    logro::$min_oro_ilp, avotable::enum_tipo_ilp);
 
-process_emails_logros( 'comunicado_bronce', 1, avotable::enum_tipo_pregunta);
-process_emails_logros( 'comunicado_plata',  2, avotable::enum_tipo_pregunta);
-process_emails_logros( 'comunicado_oro',    3, avotable::enum_tipo_pregunta);
+process_emails_logros( 'comunicado_bronce', logro::$min_bronce_pregunta, avotable::enum_tipo_pregunta);
+process_emails_logros( 'comunicado_plata',  logro::$min_plata_pregunta, avotable::enum_tipo_pregunta);
+process_emails_logros( 'comunicado_oro',    logro::$min_oro_pregunta, avotable::enum_tipo_pregunta);
 
-process_emails_logros( 'comunicado_bronce', 1, avotable::enum_tipo_propuesta);
-process_emails_logros( 'comunicado_plata',  2, avotable::enum_tipo_propuesta);
-process_emails_logros( 'comunicado_oro',    3, avotable::enum_tipo_propuesta);
+process_emails_logros( 'comunicado_bronce', logro::$min_bronce_propuesta, avotable::enum_tipo_propuesta);
+process_emails_logros( 'comunicado_plata',  logro::$min_plata_propuesta, avotable::enum_tipo_propuesta);
+process_emails_logros( 'comunicado_oro',    logro::$min_oro_propuesta, avotable::enum_tipo_propuesta);
 
 process_exitos(avotable::enum_tipo_ilp);
 process_exitos(avotable::enum_tipo_propuesta);

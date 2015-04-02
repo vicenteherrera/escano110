@@ -8,9 +8,11 @@ class logro {
     public static $min_oro_ilp = 5000;
     public static $min_plata_ilp = 2000;
     public static $min_bronce_ilp = 500;
+    
     public static $min_oro_pregunta = 50;
     public static $min_plata_pregunta = 25;
     public static $min_bronce_pregunta = 10;
+    
     public static $min_oro_propuesta = 500;
     public static $min_plata_propuesta = 110;
     public static $min_bronce_propuesta = 50;
@@ -37,19 +39,19 @@ class logro {
 		
 		switch($this->tipo) {
 			case avotable::enum_tipo_propuesta:
-				$this->min_bronce = 50;
-				$this->min_plata = 110;
-				$this->min_oro = 500;
+				$this->min_bronce = self::$min_bronce_propuesta; //50;
+				$this->min_plata = self::$min_plata_propuesta; //110;
+				$this->min_oro = self::$min_oro_propuesta; //500;
 			break;
 			case avotable::enum_tipo_ilp:
-				$this->min_bronce = 500;
-				$this->min_plata = 2000;
-				$this->min_oro = 5000;
+				$this->min_bronce = self::$min_bronce_ilp; //500;
+				$this->min_plata = self::$min_plata_ilp; //2000;
+				$this->min_oro = self::$min_oro_ilp; //5000;
 			break;
 			case avotable::enum_tipo_pregunta:
-				$this->min_bronce = 10;
-				$this->min_plata = 25;
-				$this->min_oro = 50;
+				$this->min_bronce = self::$min_bronce_pregunta; //10;
+				$this->min_plata = self::$min_plata_pregunta; //25;
+				$this->min_oro = self::$min_oro_pregunta; //50;
 			break;
             default;
                 throw new ExceptionDeveloper();
