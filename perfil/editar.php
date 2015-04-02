@@ -7,9 +7,9 @@ $e->add_command(new command_insert());
 $e->add_command(new command_update());
 $e->add_command(new command_insert_or_update());
 $e->add_command(new command_remove_file());
-
 $e->init_config();   
 $e->get('type')->set_readonly();
+
 $e->control_group = new control_edit($e);
 
 $e->control_group->add(
@@ -18,12 +18,15 @@ $e->control_group->add(
     'username',
     'name',
     'surname',
+    'date_of_birth',
     'description', 
+    'web',
     'avatar',
     new control_fieldset($e,'','Cambio de contraseña','',
         array(
     'password',
-    'password2'),'')
+    'password2'),''),
+    'group'
 );  
       
 $e->send_button_mesage = 'Guardar cambios';

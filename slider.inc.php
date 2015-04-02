@@ -64,7 +64,7 @@ $prop_img = (500 / 909 );
 
 <div> <!--style="height:<?php echo round((370*$prop_img)+2); ?>px;">-->
     <div class="flex-container">
-        <div class="flexslider">
+        <div class="flexslider" style="height: 165px;">
             <ul class="slides">
             <?php
                 foreach($data as $d) {
@@ -120,7 +120,7 @@ $prop_img = (500 / 909 );
 
 
 
-<div class="slider-anchor-block" style="margin-top: 10px; padding: 0 6px; margin-bottom: 10px;">
+<div class="slider-anchor-block" style="margin-top: 10px; padding: 0 6px; margin-bottom: 10px; height: 114px;">
     <?php
         $i = 1;
         $rels = array(

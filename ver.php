@@ -43,23 +43,19 @@ website::load_layout('layout.inc.php');
   if ( count($propuesta) == 0 ) {
     echo 'Parámetros por URL incorrectos.<br /><a href="./" class="leer_mas">VOLVER AL LISTADO</a>';
     return;
-  }  
+  }
   
   ?>
   
   <script type="text/javascript">
     // URL del miniapplet (ubicación de miniapplet-full.jar, miniapplet.js)
     var urlmapplet = 'http://wwww.escaño110.org/MiniApplet_v1_2';
-    
     // URL del servlet StorageService
     var storageService = urlmapplet + '/sign/StorageService';
-    
     // URL del servlet RetrieveService
     var retrieveService = urlmapplet+'/sign/RetrieveService';
-    
     MiniApplet.cargarMiniApplet(urlmapplet);
     //MiniApplet.setServlets(storageService, retrieveService); // Configura servlets
-    
     
     function saveSignatureFunction (signature) {
         // Guardamos la firma en un campo de un formulario
@@ -75,7 +71,6 @@ website::load_layout('layout.inc.php');
     }
 
     // Llamamos a la operación de firma
-    //
     
     function testSign() {
         var dataB64 = 'aaa';
@@ -111,13 +106,9 @@ website::load_layout('layout.inc.php');
 
   <?php
   
-  
-  
-  
   $item = new item_avotable();
   $item->data = $propuesta;  
   echo $item->__toString();
-    
-  
+
     
     

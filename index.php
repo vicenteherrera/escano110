@@ -30,9 +30,9 @@ website::load_layout('layout_portada.inc.php');
 ?>
 <div id="central" style="position: relative;">
     <!--<img src="img/banderola_alfa_min.png" alt="Fase alfa" style="position:  absolute; left: -19px; top: 0px; z-index: 999;" />-->
-	<a href="./participa.php"><img src="img/presenta_tu_ilp.jpg" alt="" /></a>
-	<a href="./participa.php"><img src="img/pregunta.jpg" alt="" /></a>
-	<a href="./participa.php"><img src="img/haz_tu_propuesta.jpg" alt="" /></a>
+	<a href="./participa.php"><img src="img/presenta_tu_ilp.jpg" alt="" style="width:233px; height:201px;" /></a>
+	<a href="./participa.php"><img src="img/pregunta.jpg" alt="" style="width:230px; height:201px;" /></a>
+	<a href="./participa.php"><img src="img/haz_tu_propuesta.jpg" alt="" style="width:225px; height:201px;" /></a>
 </div>
 <?php require(dirname(__FILE__).'/slider.inc.php'); ?>
 

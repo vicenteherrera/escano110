@@ -1,11 +1,18 @@
 <?php
 require_once('config.inc.php');
 
-$id_promotor = 0;
+$id_promotor = 0; $error = false;
 if (isset($_GET['id'])) $id_promotor = $_GET['id'];
+else $error = true;
 
-$usuario = new usuario($id_promotor);
-$usuario->load();
+$visible = website::$database->execute_get_simple_value(new sql_str(
+    "SELECT 1 from avotable where id_usuario='{@0}' and ( estado=1 or estado=2 or estado=3 ) limit 1",
+    $id_promotor
+));
+
+
+
+
 website::load_layout('layout.inc.php');
 
 //===========================================================================================
@@ -13,8 +20,15 @@ website::load_layout('layout.inc.php');
 
 //===========================================================================================
 
-
+if ( ! $visible ) {
+    echo 'Error en dirección URL.<br /><br />';
+    echo '<a href="iniciativas.php" class="leer_mas">Volver al listado de inciativas</a>';
+    return;
+} 
 echo "<div style=\"padding-left: 30px;\"><h1>Promotor/a</h1>";
+
+$usuario = new usuario($id_promotor);
+$usuario->load();
 
 echo "<div style=\"margin:0px 20px 9px 0; padding: 15px 15px;  vertical-align: top; line-height: 20px;\">";
 

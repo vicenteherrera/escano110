@@ -78,8 +78,11 @@ class item_avotable_lista extends item_avotable_base {
             $result .= 'Finalización: '.$this->get_descriptive_time_to_finish(). "<br />";
         }
 		$result .= '<br /><b>'.$this->get_action_noun().' hasta ahora: '.$d['votos'].'</b><br />';
-        $result .= '<a href="'.$target.'" class="leer_mas">Leer más y '.$this->get_action_verb(true).'</a>';
-        
+        if ( self::$my_items ) {
+            $result .= '<a href="'.$target.'" class="leer_mas">Ver</a>';
+        } else {
+            $result .= '<a href="'.$target.'" class="leer_mas">Leer más y '.$this->get_action_verb(true).'</a>';
+        }
         $result .= '</div>';
         
         

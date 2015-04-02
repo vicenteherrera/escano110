@@ -416,6 +416,7 @@ h2 {
 
 .header_user_info_name {
     margin: 35px 50px 0 3px !important;
+    width: 240px !important;
 }
 .actions_cell {
 	font-size: 12px;
@@ -742,10 +743,8 @@ a.parlamentario:hover {
     display: block;
 }
 
-/* Login */
-.header_user_info_name {
-    
-}
+
+
 /* http://www.ilikepixels.co.uk/drop/bubbler/ */
 .bubble 
 {

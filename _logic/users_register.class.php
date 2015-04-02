@@ -77,6 +77,7 @@ class users_register extends table_data {
         $this->get('type')->bind_to_column(array('surname','date_of_birth'),'person');
         $this->get('type')->bind_to_column(array('description','web'),'organization');
         
+        $this->get('group')->set_original_table_name('fw_users');
         $this->get('description')
             ->set_help_text('Indique una breve descripción de la organización')
             ->set_limit_len('1000');

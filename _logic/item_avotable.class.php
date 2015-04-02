@@ -8,7 +8,8 @@ class item_avotable extends item_avotable_base {
         
         //Comprobaciones de seguridad
 
-        if ( ! ( $d->estado == 1 || $d->estado == 2 || $d->estado == 3 ) && ! website::$user->is_in_any_group(array('administrador') ) ) {
+        if ( ! ( $d->estado == 1 || $d->estado == 2 || $d->estado == 3 ) && 
+            ! website::$user->is_in_any_group(array('administrador') ) && $d->id_usuario != website::$user->get_id() ) {
             $result = 'No tiene permiso para visualizar este elemento.<br /><a href="./iniciativas.php" class="leer_mas">VOLVER AL LISTADO DE INICIATIVAS</a>';
             return $result;
         }
@@ -85,10 +86,12 @@ class item_avotable extends item_avotable_base {
             $result .= '<iframe width="600" height="337" src="'.(str_replace("watch?v=","embed/",$d->url_video)).'" frameborder="0" allowfullscreen></iframe>';
         }
         if ($d->url_descripcion) {
-            $result .= '<h3><a href="'.rawurlencode($d->url_articulo).'" class="leer_mas" rel="nofollow">Visita la web descriptiva para más información</a></h3>';
+            if ( substr(strtolower($d->url_descripcion),4) != 'http' ) $d->url_descripcion = 'http://'.$d->url_descripcion;
+            $result .= '<h3><a href="'.$d->url_descripcion.'" class="leer_mas" rel="nofollow">Visita la web descriptiva para más información</a></h3>';
         }
         if ($d->url_articulo) {
-            $result .= '<h3><a href="'.rawurlencode($d->url_articulo).'" class="leer_mas">Visita el artículo destacado en nuestro blog</a></h3>';
+            if ( substr(strtolower($d->url_articulo),4) != 'http' ) $d->url_articulo = 'http://'.$d->url_articulo;
+            $result .= '<h3><a href="'.$d->url_articulo.'" class="leer_mas">Visita el artículo destacado en nuestro blog</a></h3>';
         }
         $result .= '<br style="clear: both;" />';
         $result .= '<a href="./iniciativas.php" class="leer_mas">VOLVER AL LISTADO DE INICIATIVAS</a>';
@@ -141,7 +144,7 @@ class item_avotable extends item_avotable_base {
         
         
         if ( $d->estado == avotable::enum_estado_enviada ) {                 
-            $result .= 'Este elemento aún no ha sido revisado para su publicación.<br />';
+            $result .= 'Este elemento aún no ha sido validado para su publicación.<br />';
             
         } else if ( $d->estado == avotable::enum_estado_admitida ) { 
             
