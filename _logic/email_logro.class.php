@@ -77,6 +77,7 @@ class email_logro extends email {
         $result = 'Tu '.$this->avotable_data->get_nombre_tipo().' en Escaño110 ha alcanzado el logro '; 
         if ( isset( $this->logro ) ) $result .= strtoupper($this->logro->get_nombre_logro()).':<br />';
         else $result .= 'Exitosa:<br />';
+        $result .= '<i>'.$this->avotable_data->titulo.'</i><br />';
         $result .= $this->get_url().'<br /><br />';
         $result .= 'Te damos la enhorabuena y te animamos a seguir participando con nuevas iniciativas en ';
         $result .= 'esta plataforma, porque #somosel110.';
