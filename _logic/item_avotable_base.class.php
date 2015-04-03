@@ -36,7 +36,7 @@ abstract class item_avotable_base extends aitem {
         //echo "difference " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days "; 
         $h = $interval->format("%h");
         $a = $interval->format("%a");
-        if ( $h < 0 ) {
+        if ( $h <= 0 ) {
             return '';
         }
         if ( $a <= 1 ) {
@@ -67,6 +67,12 @@ abstract class item_avotable_base extends aitem {
         
         return "<span class=\"recien_fin\">".$h." h : ".$interval->format("%I m")."</span>"; // : %s s");
         
+    }
+    public function get_fecha_cerrada() {
+        if ($this->d()->fecha_cerrada == '0000-00-00 00:00:00' || $this->d()->fecha_cerrada == '' )
+            return '';
+        
+        return date('d/m/Y', strtotime($this->d()->fecha_cerrada));
     }
     public function get_action_verb($lowercase=false) {
         $acciones = array(

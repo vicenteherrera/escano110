@@ -70,19 +70,28 @@ class item_avotable_lista extends item_avotable_base {
         $result .= $d['texto_pregunta'].$d['resumen'] .'</div>';
         
         $result .= '<div class="acciones_lista" style="width:200px; display:inline-block; vertical-align:top;">';
-        if ( $d['tipo'] == avotable::enum_tipo_pregunta ) {
-            if ($d['texto_respuesta'] == '' ) {
-                $result .= 'Tiempo sin responder: '.$this->get_days_without_answer(). "<br />";
+        
+        if ( $d['estado'] == avotable::enum_estado_admitida ) {
+        
+            if ( $d['tipo'] == avotable::enum_tipo_pregunta ) {
+                if ($d['texto_respuesta'] == '' ) {
+                    $result .= 'Tiempo sin responder: '.$this->get_days_without_answer(). "<br />";
+                }
+            } else {
+                $result .= 'Finalización: '.$this->get_descriptive_time_to_finish(). "<br />";
             }
-        } else {
-            $result .= 'Finalización: '.$this->get_descriptive_time_to_finish(). "<br />";
-        }
-		$result .= '<br /><b>'.$this->get_action_noun().' hasta ahora: '.$d['votos'].'</b><br />';
-        if ( self::$my_items ) {
-            $result .= '<a href="'.$target.'" class="leer_mas">Ver</a>';
-        } else {
+    		$result .= '<br /><b>'.$this->get_action_noun().' hasta ahora: '.$d['votos'].'</b><br />';
+
             $result .= '<a href="'.$target.'" class="leer_mas">Leer más y '.$this->get_action_verb(true).'</a>';
+
+        } else {
+            if ( $this->get_fecha_cerrada() != '' )
+                $result .= 'Finalizó el : '.$this->get_fecha_cerrada(). "<br />";
+                $result .= '<br />Consiguió '.$d['votos'].' '.$this->get_action_noun(true).'<br />';
+            $result .= '<a href="'.$target.'" class="leer_mas">Ver</a>';
         }
+        
+
         $result .= '</div>';
         
         
@@ -92,7 +101,9 @@ class item_avotable_lista extends item_avotable_base {
             
             $result .= 'Estado: '.avotable::get_estado_text($d['estado']);
         } else {
-                
+            $item_promotor = new item_promotor($d['id_usuario']);
+            $result .= $item_promotor->__toString();
+            /*
             $usuario = new usuario($d['id_usuario']);
             $usuario->load();
             
@@ -108,6 +119,7 @@ class item_avotable_lista extends item_avotable_base {
             $result .= $img;
             $result .= $usuario->get_full_name();
             $result .= '</a>';
+            */
         }
         
         $result .= '</div>';

@@ -771,3 +771,29 @@ z-index: 1;
 left: -15px;
 top: 26px;
 }
+
+/** **************** */
+.a_promotor {
+    font-size: 12px;
+    color: #333;
+    background-color: #f1f1f1;
+    display: inline-block;
+    clear: right;
+    width: 200px;
+    height: 40px;
+    text-decoration: none;
+}
+.a_promotor:hover {
+    background-color: #1C75BC;
+    color: white;
+}
+.a_promotor:hover .title_promotor {
+    color: #eee;
+}
+.a_promotor img {
+    float:left; margin: 0px 8px 0 0; width:40px; height:40px; vertical-align: middle;
+}
+.title_promotor {
+    font-size: 10px; color: #666; text-decoration: none;
+    line-height: 16px;
+}
