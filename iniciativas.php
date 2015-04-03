@@ -22,7 +22,7 @@ $a->commands['table']->item_prototype = new item_avotable_lista();
 $a->commands['table']->pagination = new pagination_ui( $a );
 $a->commands['table']->pagination->show_page_count = false;
 $a->commands['table']->pagination->show_page_jump = false;
-
+$a->commands['table']->no_data_msg = '<br /><br /><h2>No se encontraron iniciativas</h2><br /><br /><br />';
 website::load_layout('layout.inc.php');
 
 //===========================================================================================
