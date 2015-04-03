@@ -49,11 +49,17 @@ class email_cambio_estado extends email {
         
         $this->message_html = $message;
         $this->from = '"Escaño110" <info@escaño110.org>';
-        $this->to = 'vicenteherrera@vicenteherrera.com';
         $this->subject = $this->get_subject();
+        $this->to = $user->username;
+        parent::send();
+        
+        $this->to = 'vicenteherrera@vicenteherrera.com';
         parent::send();
         
         $this->to = 'info@escaño110.org';
+        parent::send();
+        
+        $this->to = 'info@sentido-comun.com';
         parent::send();
         
     }
