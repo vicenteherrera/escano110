@@ -41,6 +41,6 @@ if ( $a->get_command_name() == 'table' ) {
 }
 $a->__echo();
     
-echo $a->sql_where;
+
 echo '</div>';
 echo "<script>document.getElementById('menu_iniciativas').className ='selected';</script>";
