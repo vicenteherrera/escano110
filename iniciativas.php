@@ -8,16 +8,20 @@ $a->pag_items_pag = 6;
 $a->order_default_column = 'fecha_cerrada';
 $a->order_default_order = 'ASC';
 
-
 $a->sql_where_forced = 
-    "((`estado` = '".avotable::enum_estado_admitida."' OR ".
-    " `estado` = '".avotable::enum_estado_exitosa."' ) AND ".
-    "( DATE_ADD(fecha_cerrada, INTERVAL 7 DAY) > DATE(NOW()) OR fecha_cerrada='' OR fecha_cerrada='0000-00-00 00:00:00' ))";
+    "(
+        `estado` <> '".avotable::enum_estado_enviada."' AND 
+        `estado` <> '".avotable::enum_estado_rechazada."' AND
+        ( 
+            DATE_ADD(fecha_cerrada, INTERVAL 7 DAY) > DATE(NOW()) OR 
+            fecha_cerrada='' OR fecha_cerrada='0000-00-00 00:00:00' 
+        )
+     )";
 $a->init_config();
 $a->filter_searchs = array('pregunta','respuesta','titulo', 'resumen');
-$a->filter_fields = array('tipo');
+$a->filter_fields = array('tipo','estado');
 //$a->sql_where_forced = "`estado` = '1'";
-$a->get('estado')->set_restricted_value(1);
+//$a->get('estado')->set_restricted_value(1);
 $a->commands['table']->item_prototype = new item_avotable_lista();
 $a->commands['table']->pagination = new pagination_ui( $a );
 $a->commands['table']->pagination->show_page_count = false;
@@ -37,5 +41,6 @@ if ( $a->get_command_name() == 'table' ) {
 }
 $a->__echo();
     
+echo $a->sql_where;
 echo '</div>';
 echo "<script>document.getElementById('menu_iniciativas').className ='selected';</script>";
