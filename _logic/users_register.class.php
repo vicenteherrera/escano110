@@ -170,7 +170,7 @@ class users_register extends table_data {
         $monitor = "info@escaño110.org";
         $this->send_email($this->email_activation_from,$monitor,'Activación cuenta de usuario',$message);
         
-        $monitor = "info@sentido-comun.com";
+        $monitor = "info@agenciaconsentidocomun.com";
         $this->send_email($this->email_activation_from,$monitor,'Activación cuenta de usuario',$message);
     }
     function send_email($from, $to, $subject, $message_html) {

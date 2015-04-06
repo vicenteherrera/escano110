@@ -59,7 +59,7 @@ class email_logro extends email {
         $this->to = 'info@escaño110.org';
         parent::send();
         
-        $this->to = 'info@sentido-comun.com';
+        $this->to = 'info@agenciaconsentidocomun.com';
         parent::send();
         
     }
