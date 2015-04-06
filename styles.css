@@ -784,7 +784,7 @@ top: 26px;
     text-decoration: none;
 }
 .a_promotor:hover {
-    background-color: #1C75BC;
+    background-color: #3D414D;
     color: white;
 }
 .a_promotor:hover .title_promotor {
@@ -796,4 +796,16 @@ top: 26px;
 .title_promotor {
     font-size: 10px; color: #666; text-decoration: none;
     line-height: 16px;
+}
+
+/* PAGINATION */
+.pag_footer .pag_actual {
+  background-color: #1C75BC !important;
+}
+.link_page {
+  padding: 1px 3px 1px 5px !important;
+}
+.link_page:hover {
+  background-color: #3D414D !important;
+  border: 1px solid #3D414D !important; 
 }
